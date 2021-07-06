@@ -1,12 +1,49 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import LoginService from '@/login_service'
+import { Auth, User } from '@/valueobjects'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+// https://github.com/facebook/jest/issues/2071#issuecomment-396771463
+function mockFetch(data: Object) {
+  return jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => data
     })
-    expect(wrapper.text()).toMatch(msg)
+  );
+}
+
+describe('login_service.ts', () => {
+  it('when login(), given server respond OK, then return valid accessToken', async () => {
+    // given
+    window.fetch = mockFetch({ accessToken: "asdf" })
+
+    // when
+    let loginService = new LoginService();
+    const accessToken = await loginService.login(new Auth("valid", "auth"))
+
+    // then
+    expect(accessToken).toMatch("asdf")
+  })
+
+  it('when getUser() with valid accessToken, given server respond OK, then return User instance', async () => {
+    // given
+    let obj = {
+      "id": 1,
+      "account": "devbadak",
+      "name": "개발바닥",
+      "level": 10
+    }
+    window.fetch = mockFetch(obj)
+
+    // when
+    let loginService = new LoginService();
+    const user = await loginService.getUser("valid-token")
+
+    // then
+    expect(user).toEqual(new User(
+      obj.id,
+      obj.account,
+      obj.name,
+      obj.level,
+    ))
   })
 })

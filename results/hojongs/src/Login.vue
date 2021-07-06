@@ -18,7 +18,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Auth, LoginConfig } from "./valueobjects";
+import { Auth } from "./valueobjects";
+import LoginService from "./login_service";
+
+let loginService = new LoginService();
 
 // @Component가 없으면 this == null
 @Component
@@ -27,16 +30,9 @@ export default class Login extends Vue {
 
   login(): void {
     console.log("auth = " + this.auth);
-
-    let base_url = "http://localhost:5000";
-    fetch(base_url + "/auth/login", new LoginConfig(this.auth))
-      .then((response) => response.json())
-      .then((response_body) => {
-        console.log("token = " + response_body.accessToken);
-        // https://stackoverflow.com/a/30481866/12956829
-        window.location.href = "/user?accessToken=" + response_body.accessToken;
-      })
-      .catch((err) => console.log(err));
+    loginService.login(this.auth).then((accessToken) => {
+      window.location.href = `/user?accessToken=${accessToken}`;
+    });
   }
 }
 </script>

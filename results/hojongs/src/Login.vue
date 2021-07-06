@@ -2,8 +2,8 @@
   <div id="login">
     <form v-on:submit.prevent="login">
       <div>
-        <label for="id">ID</label>
-        <input id="id" type="text" v-model="id" />
+        <label for="account">Account</label>
+        <input id="account" type="text" v-model="account" />
       </div>
       <div>
         <label for="pwd">Password</label>
@@ -26,12 +26,30 @@ import HelloWorld from "./components/HelloWorld.vue";
   },
 })
 export default class Login extends Vue {
-  id = "";
-  pwd = "";
+  account = "devbadak";
+  pwd = "1234";
+  base_url = "http://localhost:5000";
 
   login(): void {
-    console.log("id = " + this.id);
+    console.log("account = " + this.account);
     console.log("pwd = " + this.pwd);
+
+    fetch(this.base_url + "/auth/login", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        account: this.account,
+        password: this.pwd,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response_body) => {
+        console.log("token = " + response_body.accessToken);
+      })
+      .catch((err) => console.log(err));
   }
 }
 </script>

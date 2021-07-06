@@ -28,15 +28,14 @@ import HelloWorld from "./components/HelloWorld.vue";
 export default class Login extends Vue {
   account = "devbadak";
   pwd = "1234";
-  base_url = "http://localhost:5000";
 
   login(): void {
     console.log("account = " + this.account);
     console.log("pwd = " + this.pwd);
 
-    fetch(this.base_url + "/auth/login", {
+    let base_url = "http://localhost:5000";
+    fetch(base_url + "/auth/login", {
       method: "POST",
-      mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -48,6 +47,8 @@ export default class Login extends Vue {
       .then((response) => response.json())
       .then((response_body) => {
         console.log("token = " + response_body.accessToken);
+        // https://stackoverflow.com/a/30481866/12956829
+        window.location.href = "/user?accessToken=" + response_body.accessToken;
       })
       .catch((err) => console.log(err));
   }

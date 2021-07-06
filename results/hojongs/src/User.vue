@@ -20,7 +20,7 @@ export default class Login extends Vue {
   name = "an";
   level = 1;
 
-  mounted() {
+  mounted(): void {
     console.log("mounted");
     // https://stackoverflow.com/a/58921237/12956829
     let accessToken = new URL(location.href).searchParams.get("accessToken");

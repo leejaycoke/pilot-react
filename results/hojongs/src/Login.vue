@@ -3,11 +3,11 @@
     <form v-on:submit.prevent="login">
       <div>
         <label for="account">Account</label>
-        <input id="account" type="text" v-model="account" />
+        <input id="account" type="text" v-model="auth.account" />
       </div>
       <div>
         <label for="pwd">Password</label>
-        <input id="pwd" type="password" v-model="pwd" />
+        <input id="pwd" type="password" v-model="auth.password" />
       </div>
       <div>
         <button type="submit">Login</button>
@@ -18,20 +18,15 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { Auth } from "./valueobjects";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
+// @Component가 없으면 this == null
+@Component
 export default class Login extends Vue {
-  account = "devbadak";
-  pwd = "1234";
+  auth = new Auth("devbadak", "1234");
 
   login(): void {
-    console.log("account = " + this.account);
-    console.log("pwd = " + this.pwd);
+    console.log("auth = " + this.auth);
 
     let base_url = "http://localhost:5000";
     fetch(base_url + "/auth/login", {
@@ -39,10 +34,7 @@ export default class Login extends Vue {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        account: this.account,
-        password: this.pwd,
-      }),
+      body: JSON.stringify(this.auth),
     })
       .then((response) => response.json())
       .then((response_body) => {

@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Auth } from "./valueobjects";
+import { Auth, LoginConfig } from "./valueobjects";
 
 // @Component가 없으면 this == null
 @Component
@@ -29,13 +29,7 @@ export default class Login extends Vue {
     console.log("auth = " + this.auth);
 
     let base_url = "http://localhost:5000";
-    fetch(base_url + "/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(this.auth),
-    })
+    fetch(base_url + "/auth/login", new LoginConfig(this.auth))
       .then((response) => response.json())
       .then((response_body) => {
         console.log("token = " + response_body.accessToken);

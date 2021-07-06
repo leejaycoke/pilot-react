@@ -1,5 +1,7 @@
 # hojongs
 
+hojongs's pilot project based on Vue.js 2
+
 ## Project setup
 ```
 npm install

@@ -19,7 +19,7 @@ let loginService = new LoginService();
 // https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks
 @Component
 export default class Login extends Vue {
-  user = new User("", "", "", 0);
+  user = new User(1, "", "", 0);
 
   mounted(): void {
     console.log("mounted");

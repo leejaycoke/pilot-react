@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     outline: none;
-    color: ${PALETTE.BLACK_400}
+    color: ${PALETTE.GRAY_900}
   }
 `;
 

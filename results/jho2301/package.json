@@ -1,0 +1,10 @@
+{
+  "name": "jho2301",
+  "version": "0.0.1",
+  "description": "리액트 파일럿 앱",
+  "main": "src/index.tsx",
+  "repository": "https://github.com/jho2301/pilot-react",
+  "author": "jho2301",
+  "license": "MIT",
+  "private": true
+}

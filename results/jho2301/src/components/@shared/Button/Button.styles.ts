@@ -8,15 +8,17 @@ const StyledButton = styled.button`
   padding: 0.75rem 2rem;
   border-radius: 0.375rem;
   cursor: pointer;
-  transition: 0.2s background-color;
+  transition: 0.2s all;
   width: 100%;
 
   &:hover {
     background-color: ${PALETTE.GRAY_100};
+    border: 1px solid ${PALETTE.GRAY_200};
   }
 
   &:active {
     background-color: ${PALETTE.GRAY_200};
+    border: 1px solid ${PALETTE.GRAY_400};
   }
 `;
 

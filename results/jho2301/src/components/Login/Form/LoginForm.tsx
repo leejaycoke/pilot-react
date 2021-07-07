@@ -1,4 +1,4 @@
-import Button from '../@shared/Button/Button';
+import Button from '../../@shared/Button/Button';
 import { LoginInput, LoginTitle, StyledLoginForm } from './LoginForm.styles';
 
 const LoginForm = () => {

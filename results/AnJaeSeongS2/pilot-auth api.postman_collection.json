@@ -1,0 +1,76 @@
+{
+	"variables": [],
+	"info": {
+		"name": "pilot-auth api",
+		"_postman_id": "6f4396da-bcab-bcc5-d384-0b3b1088a99a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/auth/login",
+			"request": {
+				"url": "localhost:5000/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"account\": \"devbadak\",\n    \"password\": \"1234\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/logout",
+			"request": {
+				"url": "localhost:5000/auth/logout",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 285b776e1eb74b778c41297279fbeb56",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/health",
+			"request": {
+				"url": "localhost:5000/health",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/v1/users/me",
+			"request": {
+				"url": "localhost:5000/v1/users/me",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 285b776e1eb74b778c41297279fbeb56",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

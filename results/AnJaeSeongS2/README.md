@@ -1,6 +1,9 @@
-# Quasar App (pilot-auth-ui)
+# Pilot-auth-ui app
 
-A Quasar Framework app
+A Quasar Framework v2 app
+with vue.js v3, webpack v5
+
+if you want to use postman for api test, import [pilot-auth api.postman_collection.json](./pilot-auth api.postman_collection.json) to postman.
 
 ## Install the dependencies
 ```bash

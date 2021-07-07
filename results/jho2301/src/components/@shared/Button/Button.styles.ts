@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   border-radius: 0.375rem;
   cursor: pointer;
   transition: 0.2s background-color;
+  width: 100%;
 
   &:hover {
     background-color: ${PALETTE.GRAY_100};

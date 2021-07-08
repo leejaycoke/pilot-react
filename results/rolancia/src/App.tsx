@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.module.css';
+import Login from './components/Login/Login'
 
 const App: React.FC = () => {
-  return (<h1>Hello world</h1>
-  );
+  return <Login />;
 };
 
 export default App;

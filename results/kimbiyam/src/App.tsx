@@ -1,7 +1,16 @@
-import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path={["/", "/login"]} component={LoginPage} />
+        <Route path="/user/profile" component={UserProfilePage} />
+      </Switch>
+    </Router>
+  );
+};
 
 export default App;

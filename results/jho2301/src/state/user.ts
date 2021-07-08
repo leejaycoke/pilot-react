@@ -4,7 +4,7 @@ import { requestGetUserInfo } from '../service/request/user';
 import { User } from '../types';
 import { accessTokenState } from './login';
 
-export const userInfoQuery = selector<User>({
+export const userInfoQuery = selector({
   key: 'userInfoQuery',
   get: ({ get }) => {
     const accessToken = get(accessTokenState);

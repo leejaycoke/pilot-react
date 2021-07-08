@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 import { requestLogin, requestLogout } from '../request/login';
 import { LoginForm } from '../../types';
 import { accessTokenState } from '../../state/login';
+import { SESSION_STORAGE_KEY } from '../../constants/storage';
 
 const useAuth = () => {
   const history = useHistory();
@@ -14,6 +15,7 @@ const useAuth = () => {
       const { accessToken } = await requestLogin(form);
 
       setAccessToken(accessToken);
+      sessionStorage.setItem(SESSION_STORAGE_KEY.ACCESS_TOKEN, accessToken);
     } catch (error) {
       alert('로그인에 실패했습니다.');
       return;

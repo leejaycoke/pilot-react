@@ -7,12 +7,10 @@ import { ThemeProvider } from "@material-ui/styles";
 import { globalTheme } from "./styles/globalTheme";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={globalTheme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider theme={globalTheme}>
+    <CssBaseline />
+    <App />
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

@@ -1,16 +1,19 @@
+import LoginData from "../models/LoginData";
 import apiClient from "./apiClient";
 
 const API_LOGIN = "/auth/login";
 
-const login = async () => {
+const login = async (loginData: LoginData) => {
   try {
-    const response = await apiClient.post(API_LOGIN);
+    const response = await apiClient.post(API_LOGIN, loginData.toJson());
     const { data } = response;
 
-    return data;
+    const { accessToken } = data;
+
+    return accessToken;
   } catch (e) {
-    console.error(e);
-    throw e;
+    const { message } = e.response.data;
+    throw message;
   }
 };
 

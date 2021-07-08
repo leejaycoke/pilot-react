@@ -3,7 +3,7 @@ import { memo } from "react";
 
 const useStyles = makeStyles({
   input: {
-    margin: "8px 0",
+    margin: "16px 0",
   },
 });
 

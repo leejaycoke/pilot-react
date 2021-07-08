@@ -1,4 +1,4 @@
-class Login {
+class LoginData {
   constructor(account: string, password: string) {
     this._account = account;
     this._password = password;
@@ -8,8 +8,8 @@ class Login {
   private _password: string;
 
   toJson = () => {
-    return { account: this._account, passowrd: this._password };
+    return { account: this._account, password: this._password };
   };
 }
 
-export default Login;
+export default LoginData;

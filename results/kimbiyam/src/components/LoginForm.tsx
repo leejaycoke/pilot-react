@@ -2,6 +2,10 @@ import { makeStyles, Typography } from "@material-ui/core";
 import useInput from "../hooks/useInput";
 import MainButton from "./MainButton";
 import MainTextField from "./MainTextField";
+import useLogin from "../hooks/useLogin";
+import { FormEvent } from "react";
+import LoginData from "../models/LoginData";
+import LoadingBackdrop from "../components/LoadingBackdrop";
 
 const useStyles = makeStyles({
   box: {
@@ -13,15 +17,26 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
   },
+  errorText: {
+    margin: "8px 0",
+  },
 });
 
 const LoginForm = () => {
   const classes = useStyles();
   const [account, onChangeAccount] = useInput();
   const [password, onChangePassword] = useInput();
+  const { errMsg, login, isLoading } = useLogin();
+
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const loginData = new LoginData(account, password);
+    await login(loginData);
+  };
 
   return (
-    <form className={classes.box}>
+    <form className={classes.box} onSubmit={handleOnSubmit}>
       <Typography variant="h3">로그인 하세요</Typography>
       <MainTextField
         label="ID"
@@ -37,7 +52,13 @@ const LoginForm = () => {
         name="password"
         onChange={onChangePassword}
       />
-      <MainButton label="Login" onClick={() => {}} />
+      {errMsg && (
+        <Typography className={classes.errorText} color="error">
+          {errMsg}
+        </Typography>
+      )}
+      <MainButton label="Login" type="submit" />
+      <LoadingBackdrop open={isLoading} />
     </form>
   );
 };

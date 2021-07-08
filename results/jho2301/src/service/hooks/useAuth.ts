@@ -26,11 +26,11 @@ const useAuth = () => {
     try {
       await requestLogout();
     } catch (error) {
-      console.log('error', error);
       alert('로그아웃에 실패했습니다.');
       return;
     }
 
+    setAccessToken('');
     history.push('/login');
   };
 

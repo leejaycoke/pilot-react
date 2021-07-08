@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
-import { requestLogin } from './../request/login';
+import { requestLogin, requestLogout } from './../request/login';
 import { LoginForm } from '../../types';
 import { accessTokenState } from '../../state/login';
 
@@ -22,7 +22,19 @@ const useLogin = () => {
     history.push('/users/me');
   };
 
-  return { login };
+  const logout = async () => {
+    try {
+      await requestLogout();
+    } catch (error) {
+      console.log('error', error);
+      alert('로그아웃에 실패했습니다.');
+      return;
+    }
+
+    history.push('/login');
+  };
+
+  return { login, logout };
 };
 
 export default useLogin;

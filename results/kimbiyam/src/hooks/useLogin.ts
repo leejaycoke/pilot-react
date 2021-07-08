@@ -15,6 +15,7 @@ const useLogin = () => {
       setErrMsg("");
 
       const accessToken = await authApi.login(loginData);
+
       setIsLoading(false);
 
       tokenStorage.setToken(accessToken);

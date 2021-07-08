@@ -16,6 +16,7 @@ const App = () => {
           isLoggedIn={isLoggedIn}
           exact
           path="/user/profile"
+          redirect="/"
           component={UserProfilePage}
         />
         <Route component={NotFoundPage} />

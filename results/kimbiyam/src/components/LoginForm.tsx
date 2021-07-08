@@ -24,8 +24,8 @@ const useStyles = makeStyles({
 
 const LoginForm = () => {
   const classes = useStyles();
-  const [account, onChangeAccount] = useInput();
-  const [password, onChangePassword] = useInput();
+  const { value: account, onChange: onChangeAccount } = useInput();
+  const { value: password, onChange: onChangePassword } = useInput();
   const { errMsg, login, isLoading } = useLogin();
 
   const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {

@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.module.css';
-import Login from './components/Login/Login'
+import React from "react";
+import styles from "./App.module.css";
+import Login from "./components/Login/Login";
 
 const App: React.FC = () => {
-  return <Login />;
+  return (
+    <div className={styles.container}>
+      <Login />
+    </div>
+  );
 };
 
 export default App;
-

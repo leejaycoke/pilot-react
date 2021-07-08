@@ -2,62 +2,48 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import User from "../models/User";
+import MainButton from "./MainButton";
 
 const useStyles = makeStyles({
-  box: {
-    width: "50%",
-    height: "50%",
-    border: "black 1px solid",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   root: {
     minWidth: 275,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
   },
   pos: {
     marginBottom: 12,
   },
 });
 
-export type UserProfileProps = {};
+export type UserProfileProps = {
+  user: User;
+  onClickLogout: () => void;
+};
 
-const UserProfile = () => {
+const UserProfile = ({ user, onClickLogout }: UserProfileProps) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Word of the Day
+        <Typography variant="h5" gutterBottom>
+          유저정보
         </Typography>
-        <Typography variant="h5" component="h2"></Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
+        <Typography variant="h6" gutterBottom>
+          {`Account : ${user?.getAccount()}`}
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          {`Id : ${user?.getId()}`}
+        </Typography>
+        <Typography variant="body2" component="p">
+          {`Name : ${user?.getName()}`}
+        </Typography>
+        <Typography variant="body2" component="p">
+          {`Level : ${user?.getLevel()}`}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <MainButton onClick={onClickLogout} label="로그아웃" />
       </CardActions>
     </Card>
   );

@@ -20,6 +20,11 @@ class User {
   private _account: string;
   private _name: string;
   private _level: number;
+
+  getId = () => this._id;
+  getAccount = () => this._account;
+  getName = () => this._name;
+  getLevel = () => this._level;
 }
 
 export default User;

@@ -15,12 +15,12 @@ const useLogin = () => {
       setErrMsg("");
 
       const accessToken = await authApi.login(loginData);
+      setIsLoading(false);
 
       tokenStorage.setToken(accessToken);
       history.push("/user/profile");
     } catch (e) {
       setErrMsg(e);
-    } finally {
       setIsLoading(false);
     }
   };

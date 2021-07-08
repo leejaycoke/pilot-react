@@ -5,12 +5,17 @@ import reportWebVitals from "./reportWebVitals";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import { globalTheme } from "./styles/globalTheme";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <ThemeProvider theme={globalTheme}>
-    <CssBaseline />
-    <App />
-  </ThemeProvider>,
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={globalTheme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </QueryClientProvider>,
   document.getElementById("root")
 );
 

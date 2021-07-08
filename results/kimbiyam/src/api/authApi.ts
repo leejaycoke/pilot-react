@@ -2,6 +2,7 @@ import LoginData from "../models/LoginData";
 import apiClient from "./apiClient";
 
 const API_LOGIN = "/auth/login";
+const API_LOGOUT = "/auth/logout";
 
 const login = async (loginData: LoginData) => {
   try {
@@ -17,6 +18,17 @@ const login = async (loginData: LoginData) => {
   }
 };
 
-const authApi = { login };
+const logout = async () => {
+  try {
+    const response = await apiClient.get(API_LOGOUT);
+    const { data } = response;
+
+    return data;
+  } catch (e) {
+    throw e;
+  }
+};
+
+const authApi = { login, logout };
 
 export default authApi;

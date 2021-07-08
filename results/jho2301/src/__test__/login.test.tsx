@@ -1,10 +1,16 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import LoginPage from '../pages/Login/LoginPage';
+import { createAlertMock, createPushMock } from './setupTests';
 
 describe('LOGIN', () => {
-  test('사용자는 로그인을 할 수 있다.', () => {
-    render(<LoginPage />);
+  test('사용자는 로그인을 할 수 있다.', async () => {
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    );
 
     const $idInput = screen.getByPlaceholderText('ID');
     const $passwordInput = screen.getByPlaceholderText('P/W');
@@ -14,15 +20,24 @@ describe('LOGIN', () => {
     fireEvent.change($passwordInput, { target: { value: '1234' } });
     fireEvent.click($loginButton);
 
-    const pushMock = jest.fn();
+    createAlertMock();
 
-    jest.mock('react-router-dom', () => ({
-      ...Object.assign({}, jest.requireActual('react-router-dom')),
-      useHistory: () => ({
-        push: pushMock,
-      }),
-    }));
+    await waitFor(() => expect(window.location.pathname).toEqual('/users/me'));
+  });
 
-    expect(pushMock).toBeCalledWith('/users/devbadak');
+  test('회원이 아닐시, 에러를 표시한다.', async () => {
+    render(<LoginPage />);
+
+    const $idInput = screen.getByPlaceholderText('ID');
+    const $passwordInput = screen.getByPlaceholderText('P/W');
+    const $loginButton = screen.getByRole('button');
+
+    fireEvent.change($idInput, { target: { value: 'wrong' } });
+    fireEvent.change($passwordInput, { target: { value: 'wrong' } });
+    fireEvent.click($loginButton);
+
+    const alertMock = createAlertMock();
+
+    await waitFor(() => expect(alertMock).toBeCalled());
   });
 });

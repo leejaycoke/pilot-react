@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 import LoginPage from '../pages/Login/LoginPage';
 import { createAlertMock, createPushMock } from './setupTests';
@@ -7,9 +8,11 @@ import { createAlertMock, createPushMock } from './setupTests';
 describe('LOGIN', () => {
   test('사용자는 로그인을 할 수 있다.', async () => {
     render(
-      <BrowserRouter>
-        <LoginPage />
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <LoginPage />
+        </BrowserRouter>
+      </RecoilRoot>
     );
 
     const $idInput = screen.getByPlaceholderText('ID');

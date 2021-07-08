@@ -1,14 +1,19 @@
 import { useHistory } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
-import { requsetLogin } from './../request/login';
+import { requestLogin } from './../request/login';
 import { LoginForm } from '../../types';
+import { accessTokenState } from '../../state/login';
 
 const useLogin = () => {
   const history = useHistory();
+  const setAccessToken = useSetRecoilState(accessTokenState);
 
   const login = async (form: LoginForm) => {
     try {
-      await requsetLogin(form);
+      const { accessToken } = await requestLogin(form);
+
+      setAccessToken(accessToken);
     } catch (error) {
       alert('로그인에 실패했습니다.');
       return;

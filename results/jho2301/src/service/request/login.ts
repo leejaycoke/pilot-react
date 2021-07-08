@@ -1,6 +1,7 @@
 import apiClient from '.';
 import { LoginForm } from './../../types';
 
-export const requsetLogin = (form: LoginForm) => apiClient.post<LoginForm>('/auth/login', form);
+export const requestLogin = (form: LoginForm): Promise<{ accessToken: string }> =>
+  apiClient.post<LoginForm>('/auth/login', form);
 
 export const requestLogout = () => {};

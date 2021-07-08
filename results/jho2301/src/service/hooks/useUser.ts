@@ -1,21 +1,10 @@
-import { User } from '../../types';
-import { requestGetUserInfo } from './../request/user';
+import { useRecoilValue } from 'recoil';
+import { userInfoQuery } from '../../state/user';
 
 const useUser = () => {
-  const accessToken = '';
+  const userInfo = useRecoilValue(userInfoQuery);
 
-  const getUserInfo = async (): Promise<User> => {
-    try {
-      const userInfo = await requestGetUserInfo(accessToken);
-
-      return userInfo;
-    } catch (error) {
-      alert(error.message);
-      return;
-    }
-  };
-
-  return { getUserInfo };
+  return { userInfo };
 };
 
 export default useUser;

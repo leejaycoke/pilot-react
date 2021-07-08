@@ -18,7 +18,7 @@ export const loginHandlers = [
 ];
 
 export const userHandlers = [
-  rest.get<User>('http://localhost:5000/users/me', (req, res, ctx) => {
+  rest.get<User>('http://localhost:5000/v1/users/me', (req, res, ctx) => {
     return res(
       ctx.json({
         name: '닉네임',

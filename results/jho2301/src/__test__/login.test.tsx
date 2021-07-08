@@ -3,17 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 import LoginPage from '../pages/Login/LoginPage';
-import { createAlertMock, createPushMock } from './setupTests';
+import { createAlertMock, myRender } from './testUtil';
 
 describe('LOGIN', () => {
   test('사용자는 로그인을 할 수 있다.', async () => {
-    render(
-      <RecoilRoot>
-        <BrowserRouter>
-          <LoginPage />
-        </BrowserRouter>
-      </RecoilRoot>
-    );
+    myRender(<LoginPage />);
 
     const $idInput = screen.getByPlaceholderText('ID');
     const $passwordInput = screen.getByPlaceholderText('P/W');
@@ -29,7 +23,7 @@ describe('LOGIN', () => {
   });
 
   test('회원이 아닐시, 에러를 표시한다.', async () => {
-    render(<LoginPage />);
+    myRender(<LoginPage />);
 
     const $idInput = screen.getByPlaceholderText('ID');
     const $passwordInput = screen.getByPlaceholderText('P/W');

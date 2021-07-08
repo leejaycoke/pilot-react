@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Switch } from 'react-router-dom';
 
 import LoginPage from './pages/Login/LoginPage';
@@ -8,7 +10,11 @@ const App = () => {
     <div>
       <Switch>
         <Route path={['/', '/login']} component={LoginPage} exact />
-        <Route path="/users/me" component={UserPage} exact />
+        <ErrorBoundary fallback={<div>error발생!</div>}>
+          <Suspense fallback={true}>
+            <Route path="/users/me" component={UserPage} exact />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );

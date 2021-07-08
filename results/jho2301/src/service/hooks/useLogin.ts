@@ -5,6 +5,7 @@ import { LoginForm } from '../../types';
 
 const useLogin = () => {
   const history = useHistory();
+
   const login = async (form: LoginForm) => {
     try {
       await requsetLogin(form);
@@ -14,7 +15,6 @@ const useLogin = () => {
     }
 
     history.push('/users/me');
-    console.log('hihohi');
   };
 
   return { login };

@@ -10,7 +10,7 @@ const useLogin = () => {
     try {
       await requsetLogin(form);
     } catch (error) {
-      alert(error.message);
+      alert('로그인에 실패했습니다.');
       return;
     }
 

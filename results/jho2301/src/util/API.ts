@@ -23,10 +23,12 @@ class APIClient {
 
   private async request(path: string, option: FetchOptionType) {
     const response = await fetch(this.baseURL + path, this.fetchOption(option));
+
     const isResponseJSON = response.headers.get('Content-Type') === 'application/json';
+
     const data = isResponseJSON ? await response.json() : await response.text();
 
-    if (!response.ok) throw new Error(data.message ?? data);
+    if (!response.ok) throw new Error(data.message ?? '');
 
     return data;
   }

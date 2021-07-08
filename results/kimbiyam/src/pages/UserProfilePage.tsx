@@ -1,5 +1,3 @@
-export type UserProfilePageProps = {};
-
 const UserProfilePage = () => {
   return <div></div>;
 };

@@ -1,5 +1,4 @@
-import { makeStyles, Box } from "@material-ui/core";
-import LoginForm from "../components/LoginForm";
+import { makeStyles, Box, Typography, Input, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
   box: {
@@ -21,14 +20,19 @@ const useStyles = makeStyles({
   },
 });
 
-const LoginPage = () => {
+const LoginForm = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.box}>
-      <LoginForm />
+    <Box className={classes.inner}>
+      <Typography variant="h3">로그인 하세요</Typography>
+      <Input></Input>
+      <Input></Input>
+      <Button variant="contained" color="primary">
+        Login
+      </Button>
     </Box>
   );
 };
 
-export default LoginPage;
+export default LoginForm;

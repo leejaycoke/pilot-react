@@ -25,6 +25,7 @@ const Login: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps) => {
           type="text"
           placeholder="아이디"
           ref={inputIdRef}
+          required
         />
       </div>
       <div className={styles.form__row}>
@@ -33,6 +34,7 @@ const Login: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps) => {
           type="password"
           placeholder="비밀번호"
           ref={inputPwdRef}
+          required
         />
       </div>
       <div className={`${styles.form__row} ${styles.two}`}>

@@ -1,10 +1,18 @@
 import React from 'react';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-function App() {
+import Login from './components/Login';
+import Home from './components/Home';
+
+
+const App = () => {
   return (
-    <div className="App">
-      hi hodolman
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route path='/' component={Home} exact />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

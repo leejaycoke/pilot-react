@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+
 import PALETTE from '../src/constants/palette';
 
 const GlobalStyle = createGlobalStyle`

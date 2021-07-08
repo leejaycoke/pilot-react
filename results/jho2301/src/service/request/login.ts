@@ -1,5 +1,5 @@
 import apiClient from '.';
-import { accessTokenState } from '../../state/login';
+
 import { LoginForm } from './../../types';
 
 export const requestLogin = (form: LoginForm): Promise<{ accessToken: string }> =>

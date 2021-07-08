@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil';
+
 import { userInfoQuery } from '../../state/user';
 
 const useUser = () => {

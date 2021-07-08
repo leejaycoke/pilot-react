@@ -1,3 +1,4 @@
+import { RecoilRoot } from 'recoil';
 import GlobalStyle from '../src/Global.styles';
 
 export const parameters = {
@@ -13,10 +14,12 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
-      <GlobalStyle />
-      <div style={{ height: '100vh' }}>
-        <Story />
-      </div>
+      <RecoilRoot>
+        <GlobalStyle />
+        <div style={{ height: '100vh' }}>
+          <Story />
+        </div>
+      </RecoilRoot>
     </>
   ),
 ];

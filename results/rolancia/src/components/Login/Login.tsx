@@ -1,7 +1,8 @@
 import React from "react";
+import { HttpClientProps } from '../../model/interfaces';
 import styles from "./Login.module.css";
 
-const Login: React.FC = () => {
+const Login: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps)=> {
   return (
     <form className={styles.form}>
       <div className={styles.form__row}>

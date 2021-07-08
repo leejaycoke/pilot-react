@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./App.module.css";
 import Login from "./components/Login/Login";
+import { HttpClientProps } from './model/interfaces';
 
-const App: React.FC = () => {
+const App: React.FC<HttpClientProps> = ({httpClient}: HttpClientProps) => {
   return (
     <div className={styles.container}>
-      <Login />
+      <Login httpClient={httpClient}/>
     </div>
   );
 };

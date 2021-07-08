@@ -1,0 +1,37 @@
+<template>
+  <div id="user">
+    <p>id : {{ user.id }}</p>
+    <p>account : {{ user.account }}</p>
+    <p>name : {{ user.name }}</p>
+    <p>level : {{ user.level }}</p>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import LoginService from "./login_service";
+import { User } from "./valueobjects";
+
+let loginService = new LoginService();
+
+// @Component는 Hook을 사용하기 위해 필요
+// https://class-component.vuejs.org/guide/class-component.html#hooks
+// https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks
+@Component
+export default class Login extends Vue {
+  user = new User(1, "", "", 0);
+
+  mounted(): void {
+    console.log("mounted");
+    let accessToken = new URL(location.href).searchParams.get("accessToken");
+    if (accessToken == null) throw "accessToken was null";
+
+    loginService.getUser(accessToken).then((user) => {
+      this.user = user;
+    });
+  }
+}
+</script>
+
+<style>
+</style>

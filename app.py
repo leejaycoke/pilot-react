@@ -8,6 +8,7 @@ import os
 from flask import Flask, make_response, json
 from flask import request
 from flask import jsonify
+from flask_cors import CORS
 
 from model import Login
 from uuid import uuid4
@@ -15,6 +16,7 @@ from uuid import uuid4
 from exception import *
 
 app = Flask(__name__)
+CORS(app)
 app.config['JSON_AS_ASCII'] = False
 
 TOKEN = None

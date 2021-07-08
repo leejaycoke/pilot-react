@@ -8,7 +8,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     outline: none;
-    color: ${PALETTE.GRAY_900}
+    color: ${PALETTE.GRAY_900};
+    user-select: none;
   }
 `;
 

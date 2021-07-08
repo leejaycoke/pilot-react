@@ -1,10 +1,10 @@
-import LoginForm from '../../components/Login/Form/LoginForm';
 import Template from '../../components/@shared/Template/Template';
+import UserInfo from '../../components/User/UserInfo/UserInfo';
 
 const LoginPage = () => {
   return (
     <Template>
-      <LoginForm />
+      <UserInfo />
     </Template>
   );
 };

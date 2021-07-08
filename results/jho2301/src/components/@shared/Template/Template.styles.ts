@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLoginTemplate = styled.main`
+export const StyledTemplate = styled.main`
   width: 100vw;
   height: 100vh;
   display: flex;

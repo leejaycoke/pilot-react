@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import tokenStorage from "./utils/tokenStorage";
 
@@ -17,6 +18,7 @@ const App = () => {
           path="/user/profile"
           component={UserProfilePage}
         />
+        <Route component={NotFoundPage} />
       </Switch>
     </Router>
   );

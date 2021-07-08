@@ -37,7 +37,7 @@ class APIClient {
         'Content-Type': 'application/json',
         ...(accessToken && { Authorization: `bearer  ${accessToken}` }),
       },
-      ...(payload && { body: JSON.stringify(payload) }),
+      ...Object.assign({}, payload && { body: JSON.stringify(payload) }),
     };
   }
 }

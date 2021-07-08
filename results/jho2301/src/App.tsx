@@ -1,9 +1,11 @@
+import { Route } from 'react-router-dom';
+
 import LoginPage from './pages/Login/LoginPage';
 
 const App = () => {
   return (
     <div>
-      <LoginPage />
+      <Route path={['/', '/login']} exact component={LoginPage} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 
-import { SESSION_STORAGE_KEY } from '../../constants/storage';
+import { clearAccessTokenStorage } from '../../service/auth';
 import { accessTokenState } from '../../state/login';
 import { userInfoQuery } from '../../state/user';
 import { User } from '../../types';
@@ -15,7 +15,7 @@ const useUser = () => {
       : { account: '', name: '', id: -1, level: -1 };
 
   if (userInfoLoadable.state === 'hasError') {
-    sessionStorage.setItem(SESSION_STORAGE_KEY.ACCESS_TOKEN, '');
+    clearAccessTokenStorage();
     setAccessToken('');
   }
 

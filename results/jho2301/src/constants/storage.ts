@@ -1,3 +1,3 @@
-export const SESSION_STORAGE_KEY = {
-  ACCESS_TOKEN: 'sessionStorage/accessToken',
+export const STORAGE_KEY = {
+  ACCESS_TOKEN: 'accessToken',
 };

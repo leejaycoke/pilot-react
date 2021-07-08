@@ -4,18 +4,21 @@ import { useSetRecoilState } from 'recoil';
 import { requestLogin, requestLogout } from '../request/login';
 import { LoginForm } from '../../types';
 import { accessTokenState } from '../../state/login';
-import { SESSION_STORAGE_KEY } from '../../constants/storage';
+import { STORAGE_KEY } from '../../constants/storage';
+import { clearAccessTokenStorage } from '../auth';
 
 const useAuth = () => {
   const history = useHistory();
   const setAccessToken = useSetRecoilState(accessTokenState);
 
-  const login = async (form: LoginForm) => {
+  const login = async (form: LoginForm, willTokenStored: boolean) => {
     try {
       const { accessToken } = await requestLogin(form);
 
       setAccessToken(accessToken);
-      sessionStorage.setItem(SESSION_STORAGE_KEY.ACCESS_TOKEN, accessToken);
+
+      if (willTokenStored) localStorage.setItem(STORAGE_KEY.ACCESS_TOKEN, accessToken);
+      else sessionStorage.setItem(STORAGE_KEY.ACCESS_TOKEN, accessToken);
     } catch (error) {
       alert('로그인에 실패했습니다.');
       return;
@@ -32,6 +35,7 @@ const useAuth = () => {
       return;
     }
 
+    clearAccessTokenStorage();
     setAccessToken('');
     history.push('/login');
   };

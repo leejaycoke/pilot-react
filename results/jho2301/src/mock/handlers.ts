@@ -15,6 +15,9 @@ export const loginHandlers = [
       })
     );
   }),
+  rest.get('http://localhost:5000/auth/logout', (req, res, ctx) => {
+    return res(ctx.status(204), ctx.text(''));
+  }),
 ];
 
 export const userHandlers = [

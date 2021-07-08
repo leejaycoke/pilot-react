@@ -1,10 +1,10 @@
 import { LogoutButton, StyledUserInfo, UserInfoText, UserInfoTitle } from './UserInfo.styles';
 import useUser from '../../../service/hooks/useUser';
-import useLogin from '../../../service/hooks/useLogin';
+import useAuth from '../../../service/hooks/useAuth';
 
 const UserInfo = () => {
   const { userInfo } = useUser();
-  const { logout } = useLogin();
+  const { logout } = useAuth();
 
   return (
     <StyledUserInfo>

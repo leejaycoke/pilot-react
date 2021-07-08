@@ -1,11 +1,11 @@
 import { useHistory } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
-import { requestLogin, requestLogout } from './../request/login';
+import { requestLogin, requestLogout } from '../request/login';
 import { LoginForm } from '../../types';
 import { accessTokenState } from '../../state/login';
 
-const useLogin = () => {
+const useAuth = () => {
   const history = useHistory();
   const setAccessToken = useSetRecoilState(accessTokenState);
 
@@ -37,4 +37,4 @@ const useLogin = () => {
   return { login, logout };
 };
 
-export default useLogin;
+export default useAuth;

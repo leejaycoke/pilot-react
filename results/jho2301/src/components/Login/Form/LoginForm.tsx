@@ -3,11 +3,11 @@ import { FormEvent } from 'react';
 import Button from '../../@shared/Button/Button';
 import { LoginInput, LoginTitle, StyledLoginForm } from './LoginForm.styles';
 import useLoginForm from '../../../service/hooks/useLoginForm';
-import useLogin from '../../../service/hooks/useLogin';
+import useAuth from '../../../service/hooks/useAuth';
 
 const LoginForm = () => {
   const { form, setAccount, setPassword } = useLoginForm();
-  const { login } = useLogin();
+  const { login } = useAuth();
 
   const onLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

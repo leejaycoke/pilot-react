@@ -1,4 +1,4 @@
-import { LoginForm } from './../types';
+import { LoginForm, User } from './../types';
 import { rest } from 'msw';
 
 export const loginHandlers = [
@@ -12,6 +12,17 @@ export const loginHandlers = [
     return res(
       ctx.json({
         accessToken: 'xxxxxxxxxxxxxxx',
+      })
+    );
+  }),
+];
+
+export const userHandlers = [
+  rest.get<User>('http://localhost:5000/users/me', (req, res, ctx) => {
+    return res(
+      ctx.json({
+        name: '닉네임',
+        level: 999,
       })
     );
   }),

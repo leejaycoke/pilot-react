@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { AuthenticationInfoRequest, doLogin } from '../apis/modules/auth';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch } from '../app/hooks';
 import { change, changeAccessToken, changeLoggedState } from '../reducers/user';
 
 function Login(
@@ -30,6 +31,23 @@ function Login(
     });
 }
 
+type activeType = {
+  active: boolean;
+};
+
+const CustomContainer = styled.div<activeType>`
+  background: ${props => {
+    return props.theme.color.main;
+  }};
+
+  color: ${props => {
+    if (props.active) {
+      return 'white';
+    }
+    return '#eee';
+  }};
+`;
+
 export function LoginContainer(): JSX.Element {
   //   const count = useAppSelector(selectCount);
   const history = useHistory();
@@ -40,6 +58,9 @@ export function LoginContainer(): JSX.Element {
 
   return (
     <>
+      <CustomContainer active>
+        <span>Login Test 입니다.</span>
+      </CustomContainer>
       <input value={loginID} onChange={e => setLoginID(e.target.value)} />
       <input
         value={loginPASSWD}

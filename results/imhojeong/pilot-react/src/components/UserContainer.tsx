@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { doLogout, doUserInfo } from '../apis/modules/auth';
 import { useAppDispatch } from '../app/hooks';
 import { changeAccessToken } from '../reducers/user';

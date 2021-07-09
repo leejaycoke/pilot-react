@@ -1,6 +1,3 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
 import {
   doLogin,
   doLogout,
@@ -8,13 +5,6 @@ import {
   AuthenticationInfoRequest,
   AuthenticationInfoResponse,
 } from '../apis/modules/auth';
-import { resolve } from 'url';
-
-// test('renders learn react link', () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
 
 describe('doLogin unit test', () => {
   test('OK test', () => {
@@ -35,11 +25,13 @@ describe('doLogin unit test', () => {
   });
 
   test('ERROR test', () => {
-    return expect(
-      doLogin(new AuthenticationInfoRequest(process.env.REACT_APP_ID, ''))
-    ).resolves.toEqual({
-      code: 400,
-      message: expect.any(String),
+    return doLogin(
+      new AuthenticationInfoRequest(process.env.REACT_APP_ID, '')
+    ).then(payload => {
+      expect(payload.response.data).toEqual({
+        code: 400,
+        message: expect.any(String),
+      });
     });
   });
 });
@@ -68,13 +60,14 @@ describe('check User info unit test', () => {
   });
 
   test('User Info Fail Test', () => {
-    const test: AuthenticationInfoResponse = new AuthenticationInfoResponse(
-      'test'
+    return doUserInfo(new AuthenticationInfoResponse('test').accessToken).then(
+      payload => {
+        expect(payload.response.data).toEqual({
+          code: expect.any(Number),
+          message: expect.any(String),
+        });
+      }
     );
-    return expect(doUserInfo(test.accessToken)).resolves.toEqual({
-      code: expect.any(Number),
-      message: expect.any(String),
-    });
   });
 
   afterEach(() => {

@@ -1,10 +1,12 @@
 import React, { MouseEvent, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { UserEntity } from "../../model/entity";
 import { HttpClientProps } from "../../model/interfaces";
 import styles from "./UserInfo.module.css";
 
 const UserInfo: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps) => {
   const [user, setUser] = useState<UserEntity | null>();
+  const history = useHistory();
 
   useEffect(() => {
     httpClient.getUserInfo().then((res) => {
@@ -16,6 +18,8 @@ const UserInfo: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps) =>
   const handleLogout = (e: MouseEvent) => {
     e.preventDefault();
     httpClient.logout();
+    history.push('/')
+    alert('로그아웃이 성공적이네요~!😋')
   };
 
   return (

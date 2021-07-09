@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import { globalTheme } from "./styles/globalTheme";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,9 @@ ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={globalTheme}>
       <CssBaseline />
-      <App />
+      <Router>
+        <App />
+      </Router>
     </ThemeProvider>
   </QueryClientProvider>,
   document.getElementById("root")

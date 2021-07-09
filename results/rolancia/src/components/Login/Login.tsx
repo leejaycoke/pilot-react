@@ -1,4 +1,5 @@
 import React, { FormEvent, useRef } from "react";
+import { useHistory } from 'react-router-dom';
 import { LoginEntity } from "../../model/entity";
 import { HttpClientProps } from "../../model/interfaces";
 import styles from "./Login.module.css";
@@ -7,11 +8,13 @@ const Login: React.FC<HttpClientProps> = ({ httpClient }: HttpClientProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const inputIdRef = useRef<HTMLInputElement>(null);
   const inputPwdRef = useRef<HTMLInputElement>(null);
+  const history = useHistory();
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
       await httpClient.login(new LoginEntity(inputIdRef.current!.value, inputPwdRef.current!.value));
+      history.push('/user')
     } catch (error) {
       alert("로그인에 실패했습니다~! 메롱😋");
     }

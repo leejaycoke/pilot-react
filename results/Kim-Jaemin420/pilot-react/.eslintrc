@@ -28,7 +28,6 @@
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-props-no-spreading": 0,
     "react/forbid-prop-types": 0,
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "import/extensions": 0,
     "no-use-before-define": 0,
     "@typescript-eslint/explicit-function-return-type": 0,

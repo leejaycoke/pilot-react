@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { reset } from "styled-reset";
+import PALETTE from "./palette";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -8,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family: "Montserrat", "Noto Sans KR", sans-serif;
-    background-color: #f7f7f7;
+    background-color: ${PALETTE.BACKGROUND};
   }
   a{
     text-decoration: none;

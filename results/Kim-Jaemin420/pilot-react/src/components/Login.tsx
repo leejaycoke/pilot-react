@@ -17,7 +17,6 @@ const LoginWrapper = styled.form`
   text-align: center;
 `;
 
-
 const Login = () => {
   const history = useHistory();
 
@@ -28,7 +27,6 @@ const Login = () => {
   const PostFetch = new HttpFetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, new LoginData(account, password));
 
   const onClick = async () => {
-    console.log('jo');
     const res = await PostFetch.PostFetch();
     if (res.code) setError(res.message);
     else {
@@ -39,12 +37,13 @@ const Login = () => {
 
   return (
     <LoginWrapper>
-      <h1>로그인</h1>
+      <h1 style={{ marginBottom: 10 }}>로그인</h1>
       <Input
         placeholder='Enter your id'
         prefix={<UserOutlined className='site-form-item-icon' />}
         onChange={accountChange}
         style={{marginBottom: 20}}
+        onPressEnter={onClick}
       />
       <Input.Password
         placeholder='Enter your passwrod'
@@ -52,7 +51,7 @@ const Login = () => {
         onChange={passwordChange}
         onPressEnter={onClick}
       />
-      <CommonBtn onClick={onClick}>로그인</CommonBtn>
+      <CommonBtn style={{ margin: '30px auto'}} onClick={onClick}>로그인</CommonBtn>
       <span>{error}</span>
     </LoginWrapper>
   );

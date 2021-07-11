@@ -2,6 +2,18 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import HttpFetch from '../FetchData/HttpFetch';
 import { UserData } from '../FetchData/UserData';
+import styled from 'styled-components';
+import CommonBtn from './common/CommonBtn';
+
+import { Layout } from 'antd';
+const { Header, Content, Footer }  = Layout;
+
+const HeaderWrapper = styled(Header)`
+  background-color: #ff8123;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Home = () => {
   const history = useHistory();
@@ -28,16 +40,20 @@ const Home = () => {
   };
 
   return (
-    <>
-      <div>홈</div>
-      <ul>
-        <li key='account'>{userInfo.account}</li>
-        <li key='id'>{userInfo.id}</li>
-        <li key='level'>{userInfo.level}</li>
-        <li key='name'>{userInfo.name}</li>
-      </ul>
-      <button onClick={logout}>로그아웃</button>
-    </>
+    <Layout>
+      <HeaderWrapper>
+        <h1 style={{display: 'inline-block'}}>홈 페이지</h1>
+        <ul>
+          {Object.entries(userInfo).map(([key, value]) => (
+            <li key={key}><span>{key} : </span> {value}</li>
+          ))}
+          <CommonBtn style={{ width: 100}} onClick={logout}>로그아웃</CommonBtn>
+        </ul>
+      </HeaderWrapper>
+      <Content>내용</Content>
+      <Footer>푸터</Footer>
+
+    </Layout>
   );
 };
 

@@ -1,9 +1,7 @@
 class Auth {
-  private accessToken: string | null;
   private readonly storageKey: string;
 
   constructor() {
-    this.accessToken = null;
     this.storageKey = 'AUTH_KEY';
   }
 

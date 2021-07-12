@@ -62,4 +62,5 @@ $ docker start -a pilot-auth
 - [rolancia](https://github.com/leejaycoke/pilot-react/tree/main/results/rolancia) 응애 프엔 취준생입니다~! 당근과 채찍을...
 - [byeongukchoi](https://github.com/leejaycoke/pilot-react/tree/main/results/byeongukchoi) 도전..!
 - [boksilab](https://github.com/boksilab/pilot-react/tree/main/results/boksilab) 취준생 여러분 화이팅
+- [cozy60](https://github.com/cozy60/pilot-react/tree/main/results/cozy60) 주니어 개발자 한번 참여해봅니다! 피드백 적극 환영
 

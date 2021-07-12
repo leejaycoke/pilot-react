@@ -8,7 +8,6 @@ function App() {
   return (
     <div>
       <Route path="/" exact={true} component={LoginPage} />
-      {/* FIXME :: 인증된 유저만 접속 가능하게 수정 */}
       <Route path="/users" component={UserInfoPage} />
     </div>
   );

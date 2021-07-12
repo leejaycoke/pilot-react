@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Three from 'three';
 import { Canvas as ThreeCanvas, useLoader } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
@@ -36,12 +36,46 @@ type GLTFResult = GLTF & {
 
 export default function Canvas() {
 	const { nodes } = useGLTF('/Login.gltf') as GLTFResult;
+	const fonts = useLoader(Three.FontLoader, ['font/Godo.json', 'font/D2.json']);
+	const blackholeTexture = useLoader(Three.TextureLoader, 'image/blackhole.png');
+	const skyboxTexture = useLoader(Three.TextureLoader, [
+		'image/skybox/F.jpg', //Right
+		'image/skybox/B.jpg', //Left
+		'image/skybox/U.jpg', //Above
+		'image/skybox/D.jpg', //Under
+		'image/skybox/R.jpg', //Front
+		'image/skybox/L.jpg', //Back
+	]);
+	const sfxBuffer = useLoader(Three.AudioLoader, [
+		'sfx/fall1.wav',
+		'sfx/fall2.wav',
+		'sfx/fall3.wav',
+		'sfx/fall4.wav',
+	]);
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 	const [phase, setPhase] = useState(Phase.initial);
 	const [focusIndex, setFocusIndex] = useState(TabIndex.none);
 	const [textConfig, setTextConfig] = useState<ITextConfig>();
 	const [textConfigD2, setTextConfigD2] = useState<ITextConfig>();
 	const [userInfo, setUserInfo] = useState<UserInfo | undefined>();
+
+	useEffect(() => {
+		setTextConfig({
+			font: fonts[0],
+			size: 8,
+			height: 3,
+			curveSegments: 30,
+			bevelEnabled: false,
+		});
+		setTextConfigD2({
+			font: fonts[1],
+			size: 0.1,
+			height: 0.07,
+			curveSegments: 30,
+			bevelEnabled: false,
+		});
+		return () => {};
+	}, [fonts]);
 	useEffect(() => {
 		if (phase === Phase.warp1Complete) {
 			setTimeout(() => {
@@ -49,33 +83,6 @@ export default function Canvas() {
 			}, 10000);
 		}
 	}, [phase]);
-	useEffect(() => {
-		new Three.FontLoader().load('font/Godo.json', (godo) => {
-			setTextConfig({
-				font: godo,
-				size: 8,
-				height: 3,
-				curveSegments: 30,
-				bevelEnabled: false,
-			});
-		});
-		new Three.FontLoader().load('font/D2.json', (d2) => {
-			setTextConfigD2({
-				font: d2,
-				size: 0.1,
-				height: 0.07,
-				curveSegments: 30,
-				bevelEnabled: false,
-			});
-		});
-		return () => {};
-	}, []);
-	const sfxBuffer = useLoader(Three.AudioLoader, [
-		'sfx/fall1.wav',
-		'sfx/fall2.wav',
-		'sfx/fall3.wav',
-		'sfx/fall4.wav',
-	]);
 
 	const handleMissClick = () => {
 		setFocusIndex(TabIndex.none);
@@ -104,10 +111,8 @@ export default function Canvas() {
 							sfxBuffer={sfxBuffer}
 						/>
 					</Physics>
-					<Suspense fallback={null}>
-						<Skybox phase={phase} />
-						<Blackhole />
-					</Suspense>
+					<Skybox phase={phase} skyboxTexture={skyboxTexture} />
+					<Blackhole blackholeTexture={blackholeTexture} />
 					{phase === Phase.warpToCamPos3 && (
 						<>
 							<Warp setPhase={setPhase} color={'red'} numberOfStars={1000} />

@@ -1,20 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import * as Three from 'three';
-import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import Phase from '../Phase';
 
 export default React.memo(
-	function Skybox({ phase }: { phase: number }) {
+	function Skybox({ phase, skyboxTexture }: { phase: number; skyboxTexture: Three.Texture[] }) {
 		const bMaterialRef = useRef<Three.MeshBasicMaterial>(null!);
-		const skyboxTexture = useTexture([
-			'image/skybox/F.jpg', //R
-			'image/skybox/B.jpg', //L
-			'image/skybox/U.jpg', //U
-			'image/skybox/D.jpg', //D
-			'image/skybox/R.jpg', //F
-			'image/skybox/L.jpg', //B
-		]);
 		useEffect(() => {
 			skyboxTexture[2].center = new Three.Vector2(0.5, 0.5);
 			skyboxTexture[2].rotation = Math.PI / 2;
@@ -44,5 +35,5 @@ export default React.memo(
 			</mesh>
 		);
 	},
-	(prev, next) => prev.phase === next.phase
+	(prev, next) => next.phase !== Phase.warpToCamPos2
 );

@@ -53,7 +53,7 @@ export default function Character({ config, value, position, color = 'black', ph
 					<mesh ref={ref} scale={0.9}>
 						<textGeometry args={[value, config]} />
 						<meshPhysicalMaterial color={color} roughness={0.4} reflectivity={0.4} metalness={0.7} />
-						<Sound sfxBuffer={sfxBuffer} distance={10} play={playSfx} />
+						{phase === Phase.warp1Complete && <Sound sfxBuffer={sfxBuffer} distance={10} play={playSfx} />}
 					</mesh>
 				</>
 			)}

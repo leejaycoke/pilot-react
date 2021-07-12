@@ -4,7 +4,7 @@ import React from 'react';
 import palette from '../../library/styles/palette';
 import Children from '../../library/utils/children';
 
-class LoginFormType extends Children {
+class FormType extends Children {
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 
   constructor(
@@ -16,19 +16,20 @@ class LoginFormType extends Children {
   }
 }
 
-function LoginForm({ onSubmit, children }: LoginFormType) {
+function Form({ onSubmit, children }: FormType) {
   return (
-    <form css={loginFormStyle} onSubmit={onSubmit}>
+    <form css={formStyle} onSubmit={onSubmit}>
       <fieldset>{children}</fieldset>
     </form>
   );
 }
 
-const loginFormStyle = css`
+const formStyle = css`
   display: flex;
   justify-content: center;
 
   fieldset {
+    width: 100%;
     border: none;
   }
 
@@ -46,4 +47,4 @@ const loginFormStyle = css`
   }
 `;
 
-export default LoginForm;
+export default Form;

@@ -75,6 +75,8 @@ export default function Card({
 					setPhase(Phase.initial);
 				}, 350);
 			} else if (InfoResponse.type === 'fulfilled') {
+				const title = document.querySelector('#title');
+				if (title) title.innerHTML = `어서오세요 ${InfoResponse.userInfo?.name}님!`;
 				setUserInfo(InfoResponse.userInfo);
 				setPhase(Phase.warpToCamPos2);
 			}

@@ -1,6 +1,8 @@
 import React from 'react';
 import Card from '../components/Card';
 import UserInfo from '../components/UserInfo';
+import Footer from '../components/Footer';
+import Button from '../components/Button';
 
 function UserInfoPage() {
   return (
@@ -11,6 +13,11 @@ function UserInfoPage() {
         <UserInfo dt="account" dd="devbadak" />
         <UserInfo dt="name" dd="개발바닥" />
         <UserInfo dt="level" dd="1" />
+        <Footer>
+          <Button type="button" color="red">
+            logout
+          </Button>
+        </Footer>
       </div>
     </Card>
   );

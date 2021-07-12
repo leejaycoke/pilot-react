@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Api, { User } from '../apis/api';
 import useAsync from '../hooks/useAsync';
 import LoadingPage from '../pages/LoadingPage';
+import Main from './Main';
 
 function UserInfo() {
   const { data, loading, error } = useAsync<User>(Api.getUser, true);
@@ -14,7 +15,7 @@ function UserInfo() {
   if (loading) return <LoadingPage />;
 
   return (
-    <main>
+    <Main>
       {data && (
         <dl>
           <dt>account</dt>
@@ -27,7 +28,7 @@ function UserInfo() {
           <dd>{data.level}</dd>
         </dl>
       )}
-    </main>
+    </Main>
   );
 }
 

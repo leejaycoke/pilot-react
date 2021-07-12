@@ -11,6 +11,7 @@ import useAsync from '../hooks/useAsync';
 import Auth from '../utils/auth';
 import FormButton from './FormButton';
 import FormInput from './FormInput';
+import Main from './Main';
 
 function LoginForm() {
   const { run: post, loading, error } = useAsync<AuthResponse>(Api.login);
@@ -64,7 +65,7 @@ function LoginForm() {
   console.dir(error);
 
   return (
-    <StyledMain>
+    <Main>
       <h1 className="a11yHidden">Login Page</h1>
       <button type="button" onClick={() => console.log(Auth.get())}>
         test
@@ -100,14 +101,9 @@ function LoginForm() {
           </form>
         </div>
       </StyledWrapper>
-    </StyledMain>
+    </Main>
   );
 }
-
-const StyledMain = styled.main`
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.color.lightGray};
-`;
 
 const StyledWrapper = styled.div`
   position: fixed;

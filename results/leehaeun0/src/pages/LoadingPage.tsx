@@ -2,20 +2,17 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import React from 'react';
 import styled from 'styled-components';
 
+import Main from '../components/Main';
+
 const LoadingPage: React.FC = () => {
   return (
-    <StyledMain>
+    <Main>
       <StyledWrapper>
         <CircularProgress size={46} thickness={4.3} />
       </StyledWrapper>
-    </StyledMain>
+    </Main>
   );
 };
-
-const StyledMain = styled.main`
-  min-height: 100vh;
-  background-color: ${({ theme }) => theme.color.lightGray};
-`;
 
 const StyledWrapper = styled.div`
   position: fixed;

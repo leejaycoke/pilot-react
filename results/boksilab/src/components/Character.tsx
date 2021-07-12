@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useBox } from '@react-three/cannon';
 import { ITextConfig } from './Canvas';
 import { useFrame } from '@react-three/fiber';
-import * as Three from 'three';
 import { MathUtils } from 'three';
 import Phase from '../Phase';
 import Sound from './Sound';

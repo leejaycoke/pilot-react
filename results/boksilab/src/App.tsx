@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { SnackbarProvider } from 'notistack';
 import Canvas from './components/Canvas';
 import { CircularProgress } from '@material-ui/core';

@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <login v-if="!logon"/>
-    <info v-if="logon"/>
+    <login v-if="login.loginToken.value.accessToken.lenth == 0"/>
+    <info v-if="login.loginToken.value.accessToken.lenth > 0"/>
   </q-page>
 </template>
 

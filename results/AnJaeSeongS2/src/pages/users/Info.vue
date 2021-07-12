@@ -9,33 +9,6 @@
       <infoItem colorName="dark" iconName="far fa-id-badge" textLabel="식별자" v-bind:textBody="user.id"/>
     </q-list>
   </q-card>
-<!--  <q-card class="my-card" flat bordered>-->
-<!--    <q-card-section horizontal>-->
-<!--      <q-card-section>-->
-<!--        <div class="text-h6">account:<br> {{ user.account }}</div>-->
-<!--        <div class="text-subtitle2">name:<br> {{ user.name }}</div>-->
-<!--        <div class="text-subtitle2">level:<br> {{ user.level }}</div>-->
-<!--        <div class="text-subtitle2">id:<br> {{ user.id }}</div>-->
-<!--      </q-card-section>-->
-<!--      <q-img-->
-<!--        class="col-10"-->
-<!--        src="https://cdn.quasar.dev/img/parallax2.jpg"-->
-<!--      />-->
-<!--    </q-card-section>-->
-<!--  </q-card>-->
-<!--  <q-card class="my-card">-->
-<!--    <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">-->
-<!--      <div class="absolute-bottom">-->
-<!--        <div class="text-h6">{{ user.account }}</div>-->
-<!--        <div class="text-subtitle2">by {{ user.name }}</div>-->
-<!--      </div>-->
-<!--    </q-img>-->
-
-<!--    <q-card-actions>-->
-<!--      <q-text flat>Action 1</q-text>-->
-<!--      <q-text flat>Action 2</q-text>-->
-<!--    </q-card-actions>-->
-<!--  </q-card>-->
 </template>
 
 <script lang="ts">
@@ -47,13 +20,7 @@ export default defineComponent({
   name: "info",
   components: { infoItem },
   setup() {
-    const user: Ref<User> = ref<User>({
-      account: 'adsf',
-      id: 1,
-      name: 'asdfgs',
-      level: 2
-    });
-    user.value.name = 'test';
+    const user: Ref<User> = ref<User>();
     return {
       user,
     };

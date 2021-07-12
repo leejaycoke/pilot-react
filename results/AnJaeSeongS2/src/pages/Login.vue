@@ -2,8 +2,8 @@
   <div class="q-pa-md" style="max-width: 400px">
     <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md" >
       <q-icon size="100px" :name="girlSvg" />
-      <q-input v-model="id" filled label="Your ID" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type id.']" />
-      <q-input v-model="password" filled label="Your Password" :type="isInvisiblePassword ? 'password' : 'text'" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type password.']" >
+      <q-input v-model="userLoginFormat.account" filled label="계정" lazy-rules :rules="[ val => val && val.length > 0 || '계정을 입력해 주세요.']" />
+      <q-input v-model="userLoginFormat.password" filled label="패스워드" :type="isInvisiblePassword ? 'password' : 'text'" lazy-rules :rules="[ val => val && val.length > 0 || '패스워드를 입력해 주세요.']" >
         <template v-slot:append>
           <q-icon
             :name="isInvisiblePassword ? 'visibility_off' : 'visibility'"
@@ -13,23 +13,30 @@
         </template>
       </q-input>
       <div>
-        <q-btn label="Submit" type="submit" color="primary" />
-        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+        <q-btn label="로그인" type="submit" color="primary" />
+        <q-btn label="입력값 초기화" type="reset" color="primary" flat class="q-ml-sm" />
       </div>
     </q-form>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed} from "vue";
+import {defineComponent, ref, computed, Ref} from "vue";
 import {useQuasar} from "quasar";
+import {api} from "boot/axios";
+import {LoginToken, UserLoginFormat} from "components/models";
 
 export default defineComponent({
   name: "login",
   setup() {
     const $q = useQuasar()
-    const id = ref('')
-    const password = ref('')
+    const userLoginFormat: Ref<UserLoginFormat> = ref<UserLoginFormat>({
+      account: '',
+      password: '',
+    });
+    const loginToken: Ref<LoginToken> = ref<LoginToken>({
+      accessToken: '',
+    });
     const isInvisiblePassword = ref(true)
 
     const colorFace = ref('#B33636')
@@ -42,8 +49,8 @@ export default defineComponent({
     })
 
     return {
-      id,
-      password,
+      userLoginFormat,
+      loginToken,
       isInvisiblePassword,
 
       colorFace,
@@ -51,17 +58,32 @@ export default defineComponent({
       girlSvg,
 
       onSubmit () {
-        $q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Submitted'
-        })
+        api.post('http://localhost:5000/auth/login', userLoginFormat.value, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(response => {
+          loginToken.value = response.data as LoginToken;
+          $q.notify({
+            color: 'green-4',
+            textColor: 'white',
+            icon: 'cloud_done',
+            message: '방문을 환영합니다.'
+          })
+        }).catch(reason => {
+          // TODO: 일단 계정 비번잘못입력했다고 가정.
+          $q.notify({
+            color: 'red-4',
+            textColor: 'white',
+            icon: 'cloud_done',
+            message: '가입하지 않은 계정이거나, 잘못된 비밀번호입니다.'
+          })
+        });
       },
 
       onReset () {
-        id.value = ''
-        password.value = ''
+        userLoginFormat.value.account = '';
+        userLoginFormat.value.password = '';
         isInvisiblePassword.value = true
       }
     };

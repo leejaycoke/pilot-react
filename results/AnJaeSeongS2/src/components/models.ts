@@ -3,7 +3,7 @@ export interface UserLoginFormat {
   password: string;
 }
 
-export interface Token {
+export interface LoginToken {
   accessToken: string;
 }
 

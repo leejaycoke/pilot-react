@@ -3,6 +3,7 @@ import Card from '../components/Card';
 import Input from '../components/Input';
 import LoginForm from '../components/LoginForm';
 import { BlueButton } from '../components/Button';
+import ErrorMessage from '../components/ErrorMessage';
 
 function LoginPage() {
   return (
@@ -15,6 +16,8 @@ function LoginPage() {
         <footer>
           <BlueButton type="submit">submit</BlueButton>
         </footer>
+        {/* FIXME :: error가 true일시 메세지 노출하도록 수정 */}
+        <ErrorMessage>1~4글자만 입력할 수 있습니다.</ErrorMessage>
       </LoginForm>
     </Card>
   );

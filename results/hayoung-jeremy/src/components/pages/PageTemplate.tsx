@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import {lighten} from "polished";
+
+// custom
+import {PALETTE} from "style";
 
 interface PageProps {
   children?: React.ReactNode;
@@ -32,11 +36,9 @@ const StyledMain = styled.main`
   }
   & .title {
     margin-bottom: 20px;
-    padding-bottom: 20px;
     font-size: 28px;
     font-weight: 500;
-    color: #999;
-    border-bottom: 1px solid #e5e5e5;
+    color: ${lighten(0.2, PALETTE.BLACK)};
   }
 `;
 

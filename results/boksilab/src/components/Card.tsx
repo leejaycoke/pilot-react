@@ -140,6 +140,7 @@ export default function Card({
 		if (phase === Phase.warp2Complete) {
 			setUserId('');
 			setUserPw('');
+			setButtonDisabled(false);
 		}
 	}, [phase]);
 	useEffect(() => {

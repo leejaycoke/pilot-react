@@ -6,11 +6,15 @@ type PrivateRouteProps = {
   path: string;
 };
 
-function PrivateRoute({ children, path }: PrivateRouteProps) {
+function PrivateRoute({ children, path, ...rest }: PrivateRouteProps) {
   const history = useHistory();
   if ('isNotLogin') history.push('/login');
 
-  return <Route path={path}>{children}</Route>;
+  return (
+    <Route path={path} {...rest}>
+      {children}
+    </Route>
+  );
 }
 
 export default PrivateRoute;

@@ -10,10 +10,10 @@ const UserPage = lazy(() => import('../pages/UserPage'));
 function MainRouter() {
   return (
     <Switch>
-      <Route path="/login">
+      <Route exact path="/login">
         <LoginPage />
       </Route>
-      <PrivateRoute path="/user">
+      <PrivateRoute exact path="/user">
         <UserPage />
       </PrivateRoute>
       {'isNotLogin' ? <Redirect to="/login" /> : <Redirect to="/user" />}

@@ -11,6 +11,7 @@ export const signIn = async (account: string, password: string) => {
 
 export const signOut = async () => {
   const res = await apiClient.get('/auth/logout');
+  sessionStorage.clear();
 
   return res;
 };

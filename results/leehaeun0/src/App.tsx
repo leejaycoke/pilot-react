@@ -1,3 +1,4 @@
+import { SnackbarProvider } from 'notistack';
 import React, { Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,10 +15,17 @@ function App() {
       <BrowserRouter>
         <HelmetProvider>
           <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <Suspense fallback={<LoadingPage />}>
-              <MainRouter />
-            </Suspense>
+            <SnackbarProvider
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+            >
+              <GlobalStyle />
+              <Suspense fallback={<LoadingPage />}>
+                <MainRouter />
+              </Suspense>
+            </SnackbarProvider>
           </ThemeProvider>
         </HelmetProvider>
       </BrowserRouter>

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface FormButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactChild;
   icon?: React.ReactNode | null;
 }
 
-function FormButton({ children, icon, ...rest }: FormButtonProps) {
+function Button({ children, icon, ...rest }: ButtonProps) {
   return (
     <StyledButton {...rest}>
       {children}
@@ -34,4 +34,4 @@ const StyledButton = styled.button`
   }
 `;
 
-export default FormButton;
+export default Button;

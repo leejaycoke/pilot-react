@@ -8,8 +8,8 @@ import styled from 'styled-components';
 
 import Api, { AuthResponse } from '../apis/api';
 import useAsync from '../hooks/useAsync';
-import Auth from '../utils/auth';
-import FormButton from './FormButton';
+import Button from './Button';
+import CenterBox from './CenterBox';
 import FormInput from './FormInput';
 import Main from './Main';
 

@@ -74,7 +74,7 @@ const useAsync = <TResult>(callback: AsyncFc<TResult>, callOnMount?: boolean) =>
         const data = await callback(requestConfig, ...args);
         setTimeout(() => dispatch({ type: 'SUCCESS', data }), 900);
 
-        return data;
+        return true;
       } catch (error) {
         setTimeout(() => dispatch({ type: 'ERROR', error }), 900);
       }

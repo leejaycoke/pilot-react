@@ -53,9 +53,8 @@ function LoginForm() {
     if (!checkValidate()) return;
     if (errorMsg) setErrorMsg(null);
 
-    const data = await post({ account: id, password });
-    console.log('@@@@', data);
-    if (data) history.push('/user');
+    const isSuccess = await post({ account: id, password });
+    if (isSuccess) history.push('/user');
   };
 
   useUpdateEffect(() => {

@@ -32,7 +32,14 @@ class Api {
     return response.data;
   };
 
-  public getUser: AsyncFc<User> = async (_, config): Promise<User> => {
+  public logout: AsyncFc<string> = async (config) => {
+    const response = await this.apiClient.get('/auth/logout', config);
+
+    Auth.remove();
+    return response.data;
+  };
+
+  public getUser: AsyncFc<User> = async (config): Promise<User> => {
     const response = await this.apiClient.get('/v1/users/me', config);
 
     console.log('getUser response: ', response);

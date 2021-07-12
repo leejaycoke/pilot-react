@@ -4,6 +4,6 @@ const apiClient = axios.create({
   withCredentials: true,
 });
 
-apiClient.defaults.baseURL = 'http://localhost:5050';
+apiClient.defaults.baseURL = 'http://localhost:5000';
 
 export default apiClient;

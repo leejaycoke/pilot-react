@@ -38,21 +38,25 @@ const Login = () => {
   return (
     <LoginWrapper>
       <h1 style={{ marginBottom: 10 }}>로그인</h1>
+      <label className='a11y-hidden' htmlFor='account'>아이디</label>
       <Input
         placeholder='Enter your id'
         prefix={<UserOutlined className='site-form-item-icon' />}
         onChange={accountChange}
         style={{marginBottom: 20}}
         onPressEnter={onClick}
+        id='account'
       />
+      <label className='a11y-hidden' htmlFor='password'>비밀번호</label>
       <Input.Password
         placeholder='Enter your passwrod'
         prefix={<LockOutlined />}
         onChange={passwordChange}
         onPressEnter={onClick}
+        id='password'
       />
       <CommonBtn style={{ margin: '30px auto'}} onClick={onClick}>로그인</CommonBtn>
-      <span>{error}</span>
+      <span data-testid='error'>{error}</span>
     </LoginWrapper>
   );
 };

@@ -5,7 +5,7 @@ import Input from '../components/Input';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 import ErrorMessage from '../components/ErrorMessage';
-import { signIn } from '../library/api/auth/auth';
+import { AuthApi } from '../library/api/auth/auth';
 import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
@@ -28,11 +28,12 @@ function LoginPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await signIn(account, password);
-      history.push('/users');
+      await AuthApi.signIn(account, password);
+      // TODO :: history.push('/users') 로 수정
+      window.location.href = '/users';
     } catch (e) {
-      setError(e);
-      console.log(e);
+      const status = e.response;
+      setError(status.data.message);
     }
   };
 
@@ -53,8 +54,7 @@ function LoginPage() {
             login
           </Button>
         </Footer>
-        {/* FIXME :: error가 true일시 메세지 노출하도록 수정 */}
-        {/* {error && <ErrorMessage>{error}</ErrorMessage>} */}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
       </Form>
     </Card>
   );

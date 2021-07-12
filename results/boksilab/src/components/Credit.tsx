@@ -33,23 +33,27 @@ export default function Credit({ phase }: { phase: number }) {
 			>
 				<div style={{ padding: '3px' }}>
 					Icons made by{' '}
-					<a href="https://www.flaticon.com/authors/roundicons" title="Roundicons">
+					<a style={{ color: 'coral' }} href="https://www.flaticon.com/authors/roundicons" title="Roundicons">
 						Roundicons
 					</a>{' '}
 					from{' '}
-					<a href="https://www.flaticon.com/" title="Flaticon">
+					<a style={{ color: 'coral' }} href="https://www.flaticon.com/" title="Flaticon">
 						www.flaticon.com
 					</a>
 				</div>
 				<div style={{ padding: '3px' }}>
 					Skybox designed by{' '}
-					<a href="https://www.pulsarbytes.com/" title="Pulsar Bytes">
+					<a style={{ color: 'coral' }} href="https://www.pulsarbytes.com/" title="Pulsar Bytes">
 						Pulsar Bytes
 					</a>
 				</div>
 				<div style={{ padding: '3px' }}>
 					Cartoon Falling Sound Effect created by{' '}
-					<a href="https://orangefreesounds.com/cartoon-falling-sound-effect/" title="Alexander">
+					<a
+						style={{ color: 'coral' }}
+						href="https://orangefreesounds.com/cartoon-falling-sound-effect/"
+						title="Alexander"
+					>
 						Alexander
 					</a>
 				</div>

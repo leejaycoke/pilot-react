@@ -1,4 +1,4 @@
-abstract class Children {
+class Children {
   children: React.ReactNode;
 
   constructor(children: React.ReactNode) {

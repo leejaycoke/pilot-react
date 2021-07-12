@@ -31,6 +31,8 @@ export default function LogoutButton({ button, phase, setPhase, textConfigD2, se
 	const handleLogout = () => {
 		setUserInfo(undefined);
 		setPhase(Phase.initial);
+		const title = document.querySelector('#title');
+		if (title) title.innerHTML = '로그인';
 	};
 	useFrame(() => {
 		if (hover.current) {

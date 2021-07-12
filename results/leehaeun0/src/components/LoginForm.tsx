@@ -61,8 +61,6 @@ function LoginForm() {
     if (error) setErrorMsg(error.response?.data?.message ?? error.message);
   }, [error]);
 
-  console.dir(error);
-
   return (
     <Main>
       <h1 className="a11yHidden">Login Page</h1>

@@ -27,7 +27,6 @@ class Api {
   public login: AsyncFc<AuthResponse> = async (config, payload) => {
     const response = await this.apiClient.post('/auth/login', payload, config);
 
-    console.log('login response: ', response);
     Auth.set(response.data.accessToken);
     return response.data;
   };
@@ -42,7 +41,6 @@ class Api {
   public getUser: AsyncFc<User> = async (config): Promise<User> => {
     const response = await this.apiClient.get('/v1/users/me', config);
 
-    console.log('getUser response: ', response);
     return response.data;
   };
 }

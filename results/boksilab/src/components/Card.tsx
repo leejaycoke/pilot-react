@@ -27,6 +27,7 @@ interface IProps {
 	textConfig: ITextConfig | undefined;
 	textConfigD2: ITextConfig | undefined;
 	setUserInfo: React.Dispatch<React.SetStateAction<UserInfo | undefined>>;
+	sfxBuffer: AudioBuffer[];
 }
 export default function Card({
 	nodes,
@@ -38,6 +39,7 @@ export default function Card({
 	textConfig,
 	textConfigD2,
 	setUserInfo,
+	sfxBuffer,
 }: IProps) {
 	const [userId, setUserId] = useState('');
 	const [userPw, setUserPw] = useState('');
@@ -182,6 +184,7 @@ export default function Card({
 				children={userId}
 				pointer={focusIndex === TabIndex.input1}
 				phase={phase}
+				sfxBuffer={sfxBuffer}
 			/>
 			<Text
 				config={textConfigD2}
@@ -191,6 +194,7 @@ export default function Card({
 				hideValue={true}
 				pointer={focusIndex === TabIndex.input2}
 				phase={phase}
+				sfxBuffer={sfxBuffer}
 			/>
 		</>
 	);

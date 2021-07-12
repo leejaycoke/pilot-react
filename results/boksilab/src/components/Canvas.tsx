@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import * as Three from 'three';
-import { Canvas as ThreeCanvas } from '@react-three/fiber';
+import { Canvas as ThreeCanvas, useLoader } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -69,6 +69,12 @@ export default function Canvas() {
 		});
 		return () => {};
 	}, []);
+	const sfxBuffer = useLoader(Three.AudioLoader, [
+		'sfx/fall1.wav',
+		'sfx/fall2.wav',
+		'sfx/fall3.wav',
+		'sfx/fall4.wav',
+	]);
 
 	const handleMissClick = () => {
 		setFocusIndex(TabIndex.none);
@@ -93,6 +99,7 @@ export default function Canvas() {
 						textConfig={textConfig}
 						textConfigD2={textConfigD2}
 						setUserInfo={setUserInfo}
+						sfxBuffer={sfxBuffer}
 					/>
 				</Physics>
 				<Suspense fallback={null}>

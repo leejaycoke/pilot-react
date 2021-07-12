@@ -62,4 +62,5 @@ $ docker start -a pilot-auth
 - [rolancia](https://github.com/leejaycoke/pilot-react/tree/main/results/rolancia) 응애 프엔 취준생입니다~! 당근과 채찍을...
 - [byeongukchoi](https://github.com/leejaycoke/pilot-react/tree/main/results/byeongukchoi) 도전..!
 - [boksilab](https://github.com/boksilab/pilot-react/tree/main/results/boksilab) 취준생 여러분 화이팅
+- [Leehaeun0](https://github.com/Leehaeun0/pilot-react/tree/main/results/leehaeun0) 프론트엔드 5개월차 신입입니다 피드백 주시면 감사합니다!
 

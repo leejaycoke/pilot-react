@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+## 파일럿 프로젝트 - React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React 파일럿 프로젝트를 진행한다.
 
-## Available Scripts
+본인이 알고 있는 지식, 할 수 있는 모든것을 총 동원하여 만든다.
 
-In the project directory, you can run:
+로그인을 통해 토큰을 입력받은 뒤 회원정보를 보여주는 페이지로 이동한다.
 
-### `yarn start`
+## PR
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React 프로젝트는 `./results/본인아이디`에 생성한다.
+- README.md 마지막 `자랑하기`에 본인의 repository 주소를 넣고 PR
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 설치
 
-### `yarn test`
+1. [Docker](https://www.docker.com/) 설치
+2. [Repository](https://github.com/leejaycoke/pilot-auth) Fork & Clone
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+$ docker build -t pilot-auth .
+$ docker run --name pilot-auth -p 5000:5000 pilot-auth
 
-### `yarn build`
+# restart
+$ docker start -a pilot-auth
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> 서버가 재시작 되면 인증 토큰이 갱신됩니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 요구 사항
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- git (github)
+- webstorm
+- React
+- Typescript
+- Test Case 작성
+- 자바스크립트 Object `{}` (type object 포함)의 사용을 하지말아보자!
+- API 요청, 응답 데이터는 클래스를 이용
 
-### `yarn eject`
+## 구현 내용
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+화면 구성, 디자인은 자유
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 로그인 페이지
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+아이디, 비밀번호를 입력하고 로그인하는 화면을 만든다.  
+로그인이 완료되면 회원정보 페이지로 이동한다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 회원정보 페이지
 
-## Learn More
+회원정보를 보여주는 화면
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API 문서
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[링크](https://github.com/leejaycoke/pilot-react/blob/master/API.md)
+
+## 자랑하기
+
+- [leejaycoke](https://github.com/leejaycoke/pilot-react/results/hodolman) 예를들어 초보 개발자인데 한 번 해봤습니다. 피드백주세요
+- [hojongs](https://github.com/hojongs/pilot-react/results/hojongs) 프론트엔드 경험 전무하지만 Vue로 스타트 끊어봅니다!
+- [Kim-Jaemin420](https://github.com/Kim-Jaemin420/pilot-react/resul)

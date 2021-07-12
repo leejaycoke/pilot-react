@@ -57,4 +57,5 @@ $ docker start -a pilot-auth
 
 - [leejaycoke](https://github.com/leejaycoke/pilot-react/results/hodolman) 예를들어 초보 개발자인데 한 번 해봤습니다. 피드백주세요
 - [hojongs](https://github.com/hojongs/pilot-react/results/hojongs) 프론트엔드 경험 전무하지만 Vue로 스타트 끊어봅니다!
+- [Kim-Jaemin420](https://github.com/Kim-Jaemin420/pilot-react/results/Kim-Jaemin420) 부족하지만 열심히 해봤습니다!
 

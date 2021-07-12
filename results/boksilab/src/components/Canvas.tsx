@@ -15,6 +15,7 @@ import UserInfoView from './UserInfoView';
 import Phase from '../Phase';
 import TabIndex from '../TabIndex';
 import UserInfo from '../UserInfo';
+import Credit from './Credit';
 
 export interface ITextConfig {
 	font: Three.Font;
@@ -81,55 +82,58 @@ export default function Canvas() {
 	};
 
 	return (
-		<div id="canvas-container">
-			<ThreeCanvas shadows={true} onPointerMissed={handleMissClick}>
-				<color attach="background" args={['black']} />
-				<Physics size={100} gravity={[0, -2, 0]}>
-					<Camera phase={phase} setPhase={setPhase} />
-					{/* <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} /> */}
-					<Lights />
-					<Card
-						nodes={nodes}
-						enqueueSnackbar={enqueueSnackbar}
-						closeSnackbar={closeSnackbar}
-						phase={phase}
-						setPhase={setPhase}
-						focusIndex={focusIndex}
-						setFocusIndex={setFocusIndex}
-						textConfig={textConfig}
-						textConfigD2={textConfigD2}
-						setUserInfo={setUserInfo}
-						sfxBuffer={sfxBuffer}
-					/>
-				</Physics>
-				<Suspense fallback={null}>
-					<Skybox phase={phase} />
-					<Blackhole />
-				</Suspense>
-				{phase === Phase.warpToCamPos3 && (
-					<>
-						<Warp setPhase={setPhase} color={'red'} numberOfStars={1000} />
-						<Warp setPhase={setPhase} color={'green'} numberOfStars={1000} />
-						<Warp setPhase={setPhase} color={'#3333FF'} numberOfStars={1000} />
-						<Warp setPhase={setPhase} color={'magenta'} numberOfStars={1000} />
-						<Warp setPhase={setPhase} color={'gold'} numberOfStars={1000} />
-						<Warp setPhase={setPhase} color={'#BC2525'} numberOfStars={2000} />
-						<Warp setPhase={setPhase} color={'#9B45E4'} numberOfStars={2000} />
-						<Warp setPhase={setPhase} color={'white'} numberOfStars={3000} />
-					</>
-				)}
-				{userInfo && (
-					<UserInfoView
-						phase={phase}
-						setPhase={setPhase}
-						textConfigD2={textConfigD2}
-						userInfo={userInfo}
-						setUserInfo={setUserInfo}
-						button={nodes.button}
-					/>
-				)}
-			</ThreeCanvas>
-		</div>
+		<>
+			<div id="canvas-container">
+				<ThreeCanvas shadows={true} onPointerMissed={handleMissClick}>
+					<color attach="background" args={['black']} />
+					<Physics size={100} gravity={[0, -2, 0]}>
+						<Camera phase={phase} setPhase={setPhase} />
+						{/* <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} /> */}
+						<Lights />
+						<Card
+							nodes={nodes}
+							enqueueSnackbar={enqueueSnackbar}
+							closeSnackbar={closeSnackbar}
+							phase={phase}
+							setPhase={setPhase}
+							focusIndex={focusIndex}
+							setFocusIndex={setFocusIndex}
+							textConfig={textConfig}
+							textConfigD2={textConfigD2}
+							setUserInfo={setUserInfo}
+							sfxBuffer={sfxBuffer}
+						/>
+					</Physics>
+					<Suspense fallback={null}>
+						<Skybox phase={phase} />
+						<Blackhole />
+					</Suspense>
+					{phase === Phase.warpToCamPos3 && (
+						<>
+							<Warp setPhase={setPhase} color={'red'} numberOfStars={1000} />
+							<Warp setPhase={setPhase} color={'green'} numberOfStars={1000} />
+							<Warp setPhase={setPhase} color={'#3333FF'} numberOfStars={1000} />
+							<Warp setPhase={setPhase} color={'magenta'} numberOfStars={1000} />
+							<Warp setPhase={setPhase} color={'gold'} numberOfStars={1000} />
+							<Warp setPhase={setPhase} color={'#BC2525'} numberOfStars={2000} />
+							<Warp setPhase={setPhase} color={'#9B45E4'} numberOfStars={2000} />
+							<Warp setPhase={setPhase} color={'white'} numberOfStars={3000} />
+						</>
+					)}
+					{userInfo && (
+						<UserInfoView
+							phase={phase}
+							setPhase={setPhase}
+							textConfigD2={textConfigD2}
+							userInfo={userInfo}
+							setUserInfo={setUserInfo}
+							button={nodes.button}
+						/>
+					)}
+					{<Credit phase={phase} />}
+				</ThreeCanvas>
+			</div>
+		</>
 	);
 }
 

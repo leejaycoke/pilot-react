@@ -51,7 +51,7 @@ const reducer: Reducer = (state, action) => {
   }
 };
 
-export type AsyncFc<TResult> = ([...arg]: any[], config?: AxiosRequestConfig) => Promise<TResult>;
+export type AsyncFc<TResult> = (config?: AxiosRequestConfig, ...arg: any) => Promise<TResult>;
 
 const useAsync = <TResult>(callback: AsyncFc<TResult>, callOnMount?: boolean) => {
   const accessToken = Auth.get();
@@ -71,7 +71,7 @@ const useAsync = <TResult>(callback: AsyncFc<TResult>, callOnMount?: boolean) =>
       };
 
       try {
-        const data = await callback([...args], requestConfig);
+        const data = await callback(requestConfig, ...args);
         setTimeout(() => dispatch({ type: 'SUCCESS', data }), 900);
 
         return data;

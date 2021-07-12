@@ -24,8 +24,8 @@ class Api {
     });
   }
 
-  public login: AsyncFc<AuthResponse> = async ([payload]) => {
-    const response = await this.apiClient.post('/auth/login', payload);
+  public login: AsyncFc<AuthResponse> = async (config, payload) => {
+    const response = await this.apiClient.post('/auth/login', payload, config);
 
     console.log('login response: ', response);
     Auth.set(response.data.accessToken);

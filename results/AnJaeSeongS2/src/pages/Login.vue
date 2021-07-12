@@ -25,7 +25,7 @@ import {defineComponent, ref, computed} from "vue";
 import {useQuasar} from "quasar";
 
 export default defineComponent({
-  name: "Login",
+  name: "login",
   setup() {
     const $q = useQuasar()
     const id = ref('')

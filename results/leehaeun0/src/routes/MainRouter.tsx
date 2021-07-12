@@ -1,9 +1,10 @@
 import { lazy } from '@loadable/component';
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
@@ -13,10 +14,10 @@ function MainRouter() {
 
   return (
     <Switch>
-      <Route exact path="/login">
+      <PublicRoute exact path="/login" redirect="/user">
         <LoginPage />
-      </Route>
-      <PrivateRoute exact path="/user">
+      </PublicRoute>
+      <PrivateRoute exact path="/user" redirect="/login">
         <UserPage />
       </PrivateRoute>
       {accessToken ? <Redirect to="/user" /> : <Redirect to="/login" />}

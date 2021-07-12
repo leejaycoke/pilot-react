@@ -4,9 +4,9 @@ import React from 'react';
 
 class UsreInfoType {
   dt: string;
-  dd: string;
+  dd: string | number | undefined;
 
-  constructor(dt: string, dd: string) {
+  constructor(dt: string, dd: string | number | undefined) {
     this.dt = dt;
     this.dd = dd;
   }

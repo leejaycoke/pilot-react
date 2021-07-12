@@ -67,62 +67,32 @@ function LoginForm() {
   return (
     <Main>
       <h1 className="a11yHidden">Login Page</h1>
-      <button type="button" onClick={() => console.log(Auth.get())}>
-        test
-      </button>
-      <StyledWrapper>
-        <div>
-          <StyledH2>Welcome Back</StyledH2>
-          <form onSubmit={onSubmit}>
+      <CenterBox>
+        <StyledH2>Welcome Back</StyledH2>
+        <form onSubmit={onSubmit}>
+          <FormInput onChange={onIdChange} id="userId" label="user id" placeholder="Id" autoFocus />
+          <StyledPassWrapper>
             <FormInput
-              onChange={onIdChange}
-              id="userId"
-              label="user id"
-              placeholder="Id"
-              autoFocus
+              onChange={onPasswordChange}
+              id="userPassword"
+              label="user password"
+              placeholder="Password"
+              type={isPassVisible ? 'text' : 'password'}
+              maxLength={10}
             />
-            <StyledPassWrapper>
-              <FormInput
-                onChange={onPasswordChange}
-                id="userPassword"
-                label="user password"
-                placeholder="Password"
-                type={isPassVisible ? 'text' : 'password'}
-                maxLength={10}
-              />
-              {isPassVisible ? (
-                <StyledVisibilityIcon onClick={onClickVisibleIcon} />
-              ) : (
-                <StyledVisibilityOffIcon onClick={onClickVisibleIcon} />
-              )}
-            </StyledPassWrapper>
-            {errorMsg && <StyledErrorMsg>{errorMsg}</StyledErrorMsg>}
-            <FormButton icon={loading && <CircularProgress size={14} />}>Login</FormButton>
-          </form>
-        </div>
-      </StyledWrapper>
+            {isPassVisible ? (
+              <StyledVisibilityIcon onClick={onClickVisibleIcon} />
+            ) : (
+              <StyledVisibilityOffIcon onClick={onClickVisibleIcon} />
+            )}
+          </StyledPassWrapper>
+          {errorMsg && <StyledErrorMsg>{errorMsg}</StyledErrorMsg>}
+          <Button icon={loading && <CircularProgress size={14} />}>Login</Button>
+        </form>
+      </CenterBox>
     </Main>
   );
 }
-
-const StyledWrapper = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  width: 460px;
-  max-width: 90%;
-  padding: 50px 0;
-  border-radius: 12px;
-  background-color: ${({ theme }) => theme.color.white};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-
-  & > div {
-    width: 73%;
-  }
-`;
 
 const StyledH2 = styled.h2`
   text-align: center;

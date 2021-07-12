@@ -1,14 +1,17 @@
 import React from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { Route, RouteProps, useHistory } from 'react-router-dom';
 
-type PrivateRouteProps = {
+import Auth from '../utils/auth';
+
+interface PrivateRouteProps extends RouteProps {
   children: React.ReactChild;
   path: string;
-};
+}
 
 function PrivateRoute({ children, path, ...rest }: PrivateRouteProps) {
   const history = useHistory();
-  if ('isNotLogin') history.push('/login');
+  const accessToken = Auth.get();
+  if (!accessToken) history.push('/login');
 
   return (
     <Route path={path} {...rest}>

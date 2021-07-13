@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PageTemplate, Button, Input } from "components";
+import { PageTemplate, Form, Button, Input } from "components";
 
 const LoginPage = () => {
   const [id, setId] = useState("");
@@ -16,7 +16,7 @@ const LoginPage = () => {
   };
   return (
     <PageTemplate title="Login here">
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input type="text" placeholder="ID" value={id} onChange={handleId} />
         <Input
           type="password"
@@ -26,7 +26,7 @@ const LoginPage = () => {
         />
         <Button type="submit">로그인</Button>
         <Button>회원가입</Button>
-      </form>
+      </Form>
     </PageTemplate>
   );
 };

@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "infoItem",
+  name: 'infoItem',
   props: {
     iconName: {
       type: String,
@@ -33,10 +33,6 @@ export default defineComponent({
       type: String,
       required: true,
     }
-  },
-  setup(props) {
-    console.log('adsfadfafad');
-    console.log(props);
   }
 });
 </script>

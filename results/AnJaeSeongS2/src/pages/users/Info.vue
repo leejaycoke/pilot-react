@@ -12,15 +12,20 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, Ref} from "vue";
-import {User} from "../../components/models";
+import {defineComponent, ref, Ref} from 'vue';
+import {User} from '../../components/models';
 import infoItem from './InfoItem.vue';
 
 export default defineComponent({
-  name: "info",
+  name: 'info',
   components: { infoItem },
   setup() {
-    const user: Ref<User> = ref<User>();
+    const user: Ref<User> = ref<User>({
+      account: '',
+      id: 0,
+      name: '',
+      level: 0,
+    });
     return {
       user,
     };

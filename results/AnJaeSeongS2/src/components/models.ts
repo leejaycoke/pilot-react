@@ -1,28 +1,28 @@
 export interface UserLoginFormat {
-  account: string;
-  password: string;
+  account: string,
+  password: string,
 }
 
 export interface LoginToken {
-  accessToken: string;
+  accessToken: string,
 }
 
 export interface User {
-  account: string;
-  id: number;
-  name: string;
-  level: number;
+  account: string,
+  id: number,
+  name: string,
+  level: number,
 }
 
 export interface Response {
-  code: number;
-  message: string;
-  validate: unknown;
+  code: number,
+  message: string,
+  validate: unknown,
 }
 
 export interface InfoItem {
-  iconName: string;
-  colorName: string;
-  textLabel: string;
-  textBody: string;
+  iconName: string,
+  colorName: string,
+  textLabel: string,
+  textBody: string,
 }

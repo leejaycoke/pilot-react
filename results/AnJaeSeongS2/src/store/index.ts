@@ -5,6 +5,8 @@ import {
   Store as VuexStore,
   useStore as vuexUseStore,
 } from 'vuex'
+import loginToken from './loginToken'
+import { LoginToken } from 'components/models';
 
 // import example from './module-example'
 // import { ExampleStateInterface } from './module-example/state';
@@ -22,7 +24,8 @@ export interface StateInterface {
   // Define your own store structure, using submodules if needed
   // example: ExampleStateInterface;
   // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  example: unknown
+  // example: unknown,
+  loginToken: LoginToken,
 }
 
 // provide typings for `this.$store`
@@ -39,6 +42,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore<StateInterface>({
     modules: {
       // example
+      loginToken
     },
 
     // enable strict mode (adds overhead!)

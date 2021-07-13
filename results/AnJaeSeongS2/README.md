@@ -3,7 +3,8 @@
 A Quasar Framework v2 app
 with vue.js v3, webpack v5
 
-if you want to use postman for api test, import [pilot-auth api.postman_collection.json](./pilot-auth api.postman_collection.json) to postman.
+1. if you want to use postman for api test, import [pilot-auth api.postman_collection.json](./pilot-auth api.postman_collection.json) to postman.
+2. current source code's api call target : http://localhost:5000
 
 ## Install the dependencies
 ```bash

@@ -8,10 +8,9 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 // import { useStore } from "vuex";
-import { useStore } from "src/store";
-import login from "pages/Login.vue";
-import info from "pages/users/Info.vue";
-import {LoginToken} from "components/models";
+import { useStore } from 'src/store';
+import login from 'pages/Login.vue';
+import info from 'pages/users/Info.vue';
 
 export default defineComponent({
   name: 'PageIndex',

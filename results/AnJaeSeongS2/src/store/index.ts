@@ -5,7 +5,7 @@ import {
   Store as VuexStore,
   useStore as vuexUseStore,
 } from 'vuex'
-import loginToken from './loginToken'
+import loginToken from './loginToken';
 import { LoginToken } from 'components/models';
 
 // import example from './module-example'
@@ -42,7 +42,7 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore<StateInterface>({
     modules: {
       // example
-      loginToken
+      loginToken,
     },
 
     // enable strict mode (adds overhead!)

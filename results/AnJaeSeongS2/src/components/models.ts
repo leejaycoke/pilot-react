@@ -9,8 +9,8 @@ export interface LoginToken {
 
 export interface User {
   account: string,
-  id: number,
   name: string,
+  id: number,
   level: number,
 }
 
@@ -25,4 +25,9 @@ export interface InfoItem {
   colorName: string,
   textLabel: string,
   textBody: string,
+}
+
+export interface Error {
+  code: number,
+  message: string,
 }

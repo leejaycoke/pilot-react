@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useBox } from '@react-three/cannon';
 import { ITextConfig } from './Canvas';
 import { useFrame } from '@react-three/fiber';
-import * as Three from 'three';
 import { MathUtils } from 'three';
 import Phase from '../Phase';
+import Sound from './Sound';
 
 interface IProps {
 	config: ITextConfig | undefined;
@@ -12,9 +12,11 @@ interface IProps {
 	position: number[];
 	color?: string;
 	phase: number;
+	sfxBuffer: AudioBuffer[];
 }
 
-export default function Character({ config, value, position, color = 'black', phase }: IProps) {
+export default function Character({ config, value, position, color = 'black', phase, sfxBuffer }: IProps) {
+	const [playSfx, setPlaySfx] = useState(false);
 	const [ref, api] = useBox(() => ({
 		mass: 1,
 		// @ts-ignore
@@ -36,6 +38,9 @@ export default function Character({ config, value, position, color = 'black', ph
 					const randomNum = MathUtils.randFloat(40, 70);
 					api.applyForce([MathUtils.randFloat(-20, 20), randomNum, randomNum], [0, 0, 0]);
 					api.angularFactor.set(randomNum / 100, 1, 1);
+					setTimeout(() => {
+						setPlaySfx(true);
+					}, 1100);
 				}, MathUtils.randFloat(300, 5000));
 				break;
 		}
@@ -44,10 +49,13 @@ export default function Character({ config, value, position, color = 'black', ph
 	return (
 		<>
 			{config && (
-				<mesh ref={ref} scale={0.9}>
-					<textGeometry args={[value, config]} />
-					<meshPhysicalMaterial color={color} roughness={0.4} reflectivity={0.4} metalness={0.7} />
-				</mesh>
+				<>
+					<mesh ref={ref} scale={0.9}>
+						<textGeometry args={[value, config]} />
+						<meshPhysicalMaterial color={color} roughness={0.4} reflectivity={0.4} metalness={0.7} />
+						{phase === Phase.warp1Complete && <Sound sfxBuffer={sfxBuffer} distance={10} play={playSfx} />}
+					</mesh>
+				</>
 			)}
 		</>
 	);

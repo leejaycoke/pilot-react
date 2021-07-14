@@ -1,43 +1,39 @@
-import * as React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as Three from 'three';
-import { OrbitControls, PositionalAudio } from '@react-three/drei';
+import { useThree } from '@react-three/fiber';
+import { MathUtils } from 'three';
 
-export default function PositionalAudioScene() {
-	const listener = new Three.AudioListener();
-	const args = React.useMemo(
-		() => [
-			{
-				position: new Three.Vector3(10, 0, 10),
-				url: 'sfx/fall1.wav',
-			},
-			{
-				position: new Three.Vector3(-10, 0, 10),
-				url: 'sfx/fall2.wav',
-			},
-			{
-				position: new Three.Vector3(10, 0, -10),
-				url: 'sfx/fall3.wav',
-			},
-			{
-				position: new Three.Vector3(-10, 0, -10),
-				url: 'sfx/fall4.wav',
-			},
-		],
-		[]
-	);
+export default function PositionalAudioScene({
+	sfxBuffer,
+	distance,
+	play,
+}: {
+	sfxBuffer: AudioBuffer[];
+	distance: number;
+	play: boolean;
+}) {
+	const sound = useRef<Three.PositionalAudio>();
+	const { camera } = useThree();
+	const [listener] = useState(() => new Three.AudioListener());
 
+	useEffect(() => {
+		sound.current?.setBuffer(sfxBuffer[MathUtils.randInt(0, 3)]);
+		sound.current?.setRefDistance(distance);
+		sound.current?.setVolume(0.2);
+		camera.add(listener);
+		return () => {
+			camera.remove(listener);
+		};
+	}, []);
+	useEffect(() => {
+		if (play) {
+			sound.current?.play();
+		}
+	}, [play]);
 	return (
 		<>
 			<React.Suspense fallback={null}>
-				<group position={[0, 0, 5]}>
-					{args.map(({ position, url }, index) => (
-						<mesh key={`0${index}`} position={position}>
-							<sphereBufferGeometry attach="geometry" />
-							<meshBasicMaterial wireframe attach="material" color="hotpink" />
-							<PositionalAudio url={'sfx/fall1.wav'} loop={true} distance={100} />
-						</mesh>
-					))}
-				</group>
+				<positionalAudio ref={sound} args={[listener]} />
 			</React.Suspense>
 		</>
 	);

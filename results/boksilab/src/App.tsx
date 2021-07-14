@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { SnackbarProvider } from 'notistack';
 import Canvas from './components/Canvas';
-import { CircularProgress } from '@material-ui/core';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
 	return (
@@ -15,7 +15,7 @@ function App() {
 			}}
 		>
 			<div className="App">
-				<Suspense fallback={<CircularProgress />}>
+				<Suspense fallback={<ProgressBar />}>
 					<Canvas />
 				</Suspense>
 			</div>

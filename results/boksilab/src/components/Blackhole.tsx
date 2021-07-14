@@ -1,20 +1,17 @@
 import React, { useRef } from 'react';
 import * as Three from 'three';
-import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
 export default React.memo(
-	function Blackhole() {
+	function Blackhole({ blackholeTexture }: { blackholeTexture: Three.Texture }) {
 		const mesh = useRef<Three.Mesh>(null!);
 		const geometry = useRef<Three.PlaneGeometry>(null!);
 		const material = useRef<Three.MeshPhysicalMaterial>(null!);
-		const blackholeTexture = useTexture('image/blackhole.png');
 		useFrame(() => {
 			mesh.current.rotation.z -= 0.003;
 		});
 		return (
 			<mesh ref={mesh} rotation={[Math.PI / 2, 0, 0]} position={[0, -10, 2.5]}>
-				{/* @ts-ignore */}
 				<planeGeometry ref={geometry} attach="geometry" args={[50, 50]} />
 				<meshPhysicalMaterial
 					ref={material}

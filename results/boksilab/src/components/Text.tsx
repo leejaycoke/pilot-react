@@ -1,6 +1,5 @@
 import * as Three from 'three';
-import React, { useEffect, useState, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useEffect, useState, useRef } from 'react';
 import { ITextConfig } from './Canvas';
 import Character from './Character';
 
@@ -13,6 +12,7 @@ interface IProps {
 	hideValue?: boolean;
 	pointer: boolean;
 	phase: number;
+	sfxBuffer: AudioBuffer[];
 }
 
 export default function Text({
@@ -24,6 +24,7 @@ export default function Text({
 	hideValue,
 	pointer,
 	phase,
+	sfxBuffer,
 }: IProps) {
 	const pointerRef = useRef<Three.Mesh>(null!);
 	const blinkInterval = useRef<NodeJS.Timeout>(null!);
@@ -60,6 +61,7 @@ export default function Text({
 					position={[index * 0.075 - 0.6, hideValue ? -0.19 : 0.26, 0.35]}
 					color={color}
 					phase={phase}
+					sfxBuffer={sfxBuffer}
 				/>
 			))}
 			{config && (

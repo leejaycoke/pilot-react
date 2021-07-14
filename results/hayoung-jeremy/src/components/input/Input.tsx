@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { PALETTE } from "style";
 import { darken, lighten } from "polished";
 
@@ -14,9 +14,18 @@ const StyledInput = styled.input`
   outline: none;
   border: none;
   border-bottom: 1px solid ${PALETTE.GRAY};
-  color: ${lighten(0.2, PALETTE.BLACK)};
+
   font-size: 16px;
   transition: 0.2s;
+  ${(props) =>
+    props.value !== ""
+      ? css`
+          color: ${darken(0.2, PALETTE.MAIN)};
+          border-color: ${PALETTE.MAIN};
+        `
+      : css`
+          color: ${lighten(0.2, PALETTE.BLACK)};
+        `}
 
   &:not(:first-of-type) {
     margin-top: 16px;

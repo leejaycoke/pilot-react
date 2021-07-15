@@ -17,7 +17,7 @@ import { useStore } from 'src/store';
 import { User, Error } from '../../components/models';
 import infoItem from './InfoItem.vue';
 import { api } from 'boot/axios';
-import {AxiosError, AxiosResponse} from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import { useQuasar } from 'quasar';
 
 export default defineComponent({

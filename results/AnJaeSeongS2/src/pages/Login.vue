@@ -22,12 +22,12 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, Ref } from 'vue';
-import { useQuasar } from 'quasar';
+import { useQuasar, getCssVar } from 'quasar';
 import { api } from 'boot/axios';
 import { LoginToken, UserLoginFormat } from 'components/models';
 import { useStore } from 'src/store';
-import {AxiosError} from "axios";
-import {useRouter} from "vue-router";
+import { AxiosError } from 'axios';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'login',
@@ -40,8 +40,8 @@ export default defineComponent({
       password: '',
     });
     const isInvisiblePassword = ref(true)
-    const colorFace = ref('#B33636')
-    const colorHair = ref('#FFD700')
+    const colorFace = ref(getCssVar('primary') as string)
+    const colorHair = ref(getCssVar('dark') as string)
     const faceSvg = computed(() => {
       const face = colorFace.value.replace('#', '%23')
       const hair = colorHair.value.replace('#', '%23')
@@ -55,14 +55,7 @@ export default defineComponent({
         }
       }).then(response => {
         $store.commit('loginToken/saveLoginToken', response.data as LoginToken);
-        $router.push('/users/me').then(() => {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: '방문을 환영합니다.',
-          });
-        }).finally(null);
+        $router.push('/users/me').finally(null);
       }).catch((reason: AxiosError<Error>) => {
         // TODO: 일단 계정 비번잘못입력했다고 가정.
         let message = '가입하지 않은 계정이거나, 잘못된 비밀번호입니다.';

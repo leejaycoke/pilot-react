@@ -8,6 +8,7 @@ const mutation: MutationTree<LoginToken> = {
   },
   clearLoginToken (state: LoginToken) {
     state.accessToken = '';
+    localStorage.removeItem('accessToken');
   },
 };
 

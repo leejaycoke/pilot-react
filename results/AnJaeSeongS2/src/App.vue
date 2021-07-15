@@ -3,8 +3,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useStore } from "src/store";
-import {LoginToken} from "components/models";
+import { useStore } from 'src/store';
 
 export default defineComponent({
   name: 'App',

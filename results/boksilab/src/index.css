@@ -1,0 +1,23 @@
+@font-face {
+	font-family: 'Godo';
+	src: url('Godo.ttf');
+}
+
+* {
+	font-family: 'Godo';
+	user-select: none;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	margin: 0;
+}
+
+#canvas-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	min-height: 600px;
+}

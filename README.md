@@ -55,6 +55,13 @@ $ docker start -a pilot-auth
 
 ## 자랑하기
 
-- [leejaycoke](https://github.com/leejaycoke/pilot-react/results/hodolman) 예를들어 초보 개발자인데 한 번 해봤습니다. 피드백주세요
-- [hojongs](https://github.com/hojongs/pilot-react/results/hojongs) 프론트엔드 경험 전무하지만 Vue로 스타트 끊어봅니다!
-
+- [leejaycoke](https://github.com/leejaycoke/pilot-react/tree/main/results/hodolman) 예를들어 초보 개발자인데 한 번 해봤습니다. 피드백주세요
+- [hojongs](https://github.com/leejaycoke/pilot-react/tree/main/results/hojongs) 프론트엔드 경험 전무하지만 Vue로 스타트 끊어봅니다!
+- [jho2301](https://github.com/leejaycoke/pilot-react/tree/main/results/jho2301) 우아한테크코스 화이팅
+- [kimbiyam](https://github.com/leejaycoke/pilot-react/tree/main/results/kimbiyam) 주니어 개발자인데 한번 구현해 봤습니다!
+- [rolancia](https://github.com/leejaycoke/pilot-react/tree/main/results/rolancia) 응애 프엔 취준생입니다~! 당근과 채찍을...
+- [byeongukchoi](https://github.com/leejaycoke/pilot-react/tree/main/results/byeongukchoi) 도전..!
+- [boksilab](https://github.com/boksilab/pilot-react/tree/main/results/boksilab) 취준생 여러분 화이팅
+- [Kim-Jaemin420](https://github.com/Kim-Jaemin420/pilot-react/results/Kim-Jaemin420) 부족하지만 열심히 해봤습니다!
+- [Leehaeun0](https://github.com/Leehaeun0/pilot-react/tree/main/results/leehaeun0) 프론트엔드 5개월차 신입입니다 피드백 주시면 감사합니다!
+- [cozy60](https://github.com/cozy60/pilot-react/tree/main/results/cozy60) 주니어 개발자 한번 참여해봅니다! 피드백 적극 환영

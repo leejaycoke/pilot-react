@@ -65,3 +65,4 @@ $ docker start -a pilot-auth
 - [Kim-Jaemin420](https://github.com/Kim-Jaemin420/pilot-react/results/Kim-Jaemin420) 부족하지만 열심히 해봤습니다!
 - [Leehaeun0](https://github.com/Leehaeun0/pilot-react/tree/main/results/leehaeun0) 프론트엔드 5개월차 신입입니다 피드백 주시면 감사합니다!
 - [cozy60](https://github.com/cozy60/pilot-react/tree/main/results/cozy60) 주니어 개발자 한번 참여해봅니다! 피드백 적극 환영
+- [AnJaeSeongS2](https://github.com/AnJaeSeongS2/pilot-auth-quasar-app/tree/main/results/AnJaeSeongS2) FE 재밌네요! quasar, vue, webpack, ts 모두 입문입니다!

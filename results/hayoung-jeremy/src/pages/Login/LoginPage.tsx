@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// custom
 import { PageTemplate, Form, Button, Input } from "components";
 
 const LoginPage = () => {

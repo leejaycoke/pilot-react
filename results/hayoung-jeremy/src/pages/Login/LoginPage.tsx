@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
+// custom
 import { PageTemplate, Form, Button, Input } from "components";
+import apiClient from "service/api";
 
 const LoginPage = () => {
   const [id, setId] = useState("");
@@ -13,6 +16,10 @@ const LoginPage = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    apiClient
+      .post("/auth/login", { account: id, password })
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
   return (
     <PageTemplate title="Login here">

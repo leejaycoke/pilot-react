@@ -1,12 +1,11 @@
 import Auth from "@/dto/auth";
 import User from "@/dto/user";
+import Config from "@/config";
 
 /**
  * 외부 Login API를 호출하는 Service
  */
 export default class LoginService {
-    baseUrl = "http://localhost:5000";
-
     /**
      * login and get access token
      * 
@@ -14,7 +13,7 @@ export default class LoginService {
      * @returns accessToken
      */
     login(auth: Auth): Promise<string> {
-        return fetch(`${this.baseUrl}/auth/login`, {
+        return fetch(`${Config.baseUrl}/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -36,7 +35,7 @@ export default class LoginService {
      * @returns user information
      */
     getUser(accessToken: string): Promise<User> {
-        return fetch(`${this.baseUrl}/v1/users/me`, {
+        return fetch(`${Config.baseUrl}/v1/users/me`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${accessToken}`,

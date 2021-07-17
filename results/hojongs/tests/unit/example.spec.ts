@@ -1,4 +1,4 @@
-import LoginService from '@/service/loginService'
+import ApiService from '@/service/apiService'
 import Auth from '@/dto/auth'
 import User from '@/dto/user'
 
@@ -18,7 +18,7 @@ describe('login_service.ts', () => {
     window.fetch = mockFetch({ accessToken: "asdf" })
 
     // when
-    let loginService = new LoginService();
+    let loginService = new ApiService();
     const accessToken = await loginService.login(new Auth("valid", "auth"))
 
     // then
@@ -36,7 +36,7 @@ describe('login_service.ts', () => {
     window.fetch = mockFetch(obj)
 
     // when
-    let loginService = new LoginService();
+    let loginService = new ApiService();
     const user = await loginService.getUser("valid-token")
 
     // then

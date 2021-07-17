@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Auth from "@/dto/auth";
-import LoginService from "@/service/loginService";
+import LoginService from "@/service/apiService";
 
 let loginService = new LoginService();
 

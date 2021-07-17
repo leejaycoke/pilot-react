@@ -3,9 +3,9 @@ import User from "@/dto/user";
 import Config from "@/config";
 
 /**
- * 외부 Login API를 호출하는 Service
+ * 외부 API를 호출하는 Service
  */
-export default class LoginService {
+export default class ApiService {
     /**
      * login and get access token
      * 

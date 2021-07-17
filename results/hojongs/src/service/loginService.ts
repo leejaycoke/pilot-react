@@ -1,5 +1,5 @@
-import Auth from "@/valueobject/auth";
-import User from "@/valueobject/user";
+import Auth from "@/dto/auth";
+import User from "@/dto/user";
 
 /**
  * 외부 Login API를 호출하는 Service

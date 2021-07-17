@@ -1,6 +1,6 @@
-import LoginService from '@/login_service'
-import Auth from '@/valueobject/auth'
-import User from '@/valueobject/user'
+import LoginService from '@/service/loginService'
+import Auth from '@/dto/auth'
+import User from '@/dto/user'
 
 // https://github.com/facebook/jest/issues/2071#issuecomment-396771463
 function mockFetch(data: Object) {

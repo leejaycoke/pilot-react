@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import LoginService from "@/login_service";
-import User from "@/valueobject/user";
+import LoginService from "@/service/loginService";
+import User from "@/dto/user";
 
 let loginService = new LoginService();
 

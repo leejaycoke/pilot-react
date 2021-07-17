@@ -1,4 +1,5 @@
-import { Auth, LoginFetchConfig, User, UserFetchConfig } from "./valueobjects";
+import Auth from "@/valueobject/auth";
+import User from "@/valueobject/user";
 
 /**
  * 외부 Login API를 호출하는 Service
@@ -13,12 +14,18 @@ export default class LoginService {
      * @returns accessToken
      */
     login(auth: Auth): Promise<string> {
-        return fetch(`${this.baseUrl}/auth/login`, new LoginFetchConfig(auth))
+        return fetch(`${this.baseUrl}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(auth),
+        })
             .then((response) => response.json())
             .catch((err) => console.log(err))
-            .then((response_body) => {
-                console.log("token = " + response_body.accessToken);
-                return response_body.accessToken;
+            .then((responseBody) => {
+                console.log("token = " + responseBody.accessToken);
+                return responseBody.accessToken;
             });
     }
 
@@ -29,14 +36,19 @@ export default class LoginService {
      * @returns user information
      */
     getUser(accessToken: string): Promise<User> {
-        return fetch(`${this.baseUrl}/v1/users/me`, new UserFetchConfig(accessToken))
+        return fetch(`${this.baseUrl}/v1/users/me`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        })
             .then((response) => response.json())
             .catch((err) => console.log(err))
-            .then((response_body) => new User(
-                response_body.id,
-                response_body.account,
-                response_body.name,
-                response_body.level
+            .then((responseBody) => new User(
+                responseBody.id,
+                responseBody.account,
+                responseBody.name,
+                responseBody.level
             ));
     }
 }

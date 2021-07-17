@@ -1,0 +1,47 @@
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+}
+
+.userInfo .form__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.userInfo__label {
+  flex: 20%;
+  font-weight: bold;
+}
+
+.userInfo input {
+  flex: 80%;
+}
+
+.input__id,
+.input__pwd {
+  font-size: 1rem;
+  width: 100%;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 0.3em;
+  outline: none;
+  border: 0.5px solid #d7dbe6;
+}
+
+.input__id::placeholder,
+.input__pwd::placeholder {
+  color: #c2c4cb;
+}
+
+.logout__btn {
+  width: 100%;
+  background-color: #3d5cff;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5em 0.3em;
+  margin: 0.3em;
+  border-radius: 0.3em;
+}

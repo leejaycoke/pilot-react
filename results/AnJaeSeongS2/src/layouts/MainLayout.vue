@@ -11,21 +11,21 @@
     </q-header>
     <q-page-container>
       <q-page class="row items-center justify-evenly mdi-margin q-pa-xl">
-        <router-view />
+        <router-view/>
       </q-page>
     </q-page-container>
   </q-layout>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { useRouter } from 'vue-router';
 import { useStore } from 'src/store';
 
 export default defineComponent({
   name: 'MainLayout',
-  setup () {
+  setup() {
     const version = ref(1.0);
     const $q = useQuasar();
     const $store = useStore();
@@ -37,7 +37,7 @@ export default defineComponent({
       } else {
         $router.push('/users/me').finally(null);
       }
-    }
+    };
     $store.watch(state => state.loginToken.accessToken, routeByAccessToken);
     // routeByAccessToken($store.state.loginToken.accessToken);
     const logout = () => {
@@ -50,12 +50,12 @@ export default defineComponent({
           message: '정상적으로 로그아웃 했습니다.',
         });
       }).finally(null);
-    }
+    };
     return {
       version,
       isRenderLogoutBtn,
       logout,
-    }
-  }
-})
+    };
+  },
+});
 </script>

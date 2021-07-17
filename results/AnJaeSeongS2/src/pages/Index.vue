@@ -12,13 +12,13 @@ import info from 'pages/users/Info.vue';
 
 export default defineComponent({
   name: 'PageIndex',
-  components: { login, info },
+  components: {login, info},
   setup() {
     const $store = useStore();
     const loginToken = computed(() => $store.state.loginToken);
     return {
       loginToken,
     };
-  }
+  },
 });
 </script>

@@ -1,7 +1,7 @@
 {
   "name": "pilot-auth-ui",
   "version": "0.0.1",
-  "description": "A Quasar Framework aarn addpp",
+  "description": "A Quasar Framework app",
   "productName": "Quasar App",
   "author": "AnJaeSeongS2 <jindam91@naver.com>",
   "private": true,

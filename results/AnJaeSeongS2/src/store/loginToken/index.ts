@@ -10,7 +10,7 @@ const loginToken: Module<LoginToken, StateInterface> = {
   actions,
   getters,
   mutations,
-  state
+  state,
 };
 
 export default loginToken;

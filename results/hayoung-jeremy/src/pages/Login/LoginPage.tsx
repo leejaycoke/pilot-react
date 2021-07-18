@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 // custom
 import { PageTemplate, Form, Button, Input } from "components";
@@ -7,6 +8,7 @@ import apiClient from "service/api";
 const LoginPage = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
@@ -20,6 +22,8 @@ const LoginPage = () => {
       .post("/auth/login", { account: id, password })
       .then((res) => console.log(res))
       .catch((e) => console.log(e));
+
+    history.push("/profile");
   };
   return (
     <PageTemplate title="Login here">
@@ -32,7 +36,6 @@ const LoginPage = () => {
           onChange={handlePw}
         />
         <Button type="submit">로그인</Button>
-        <Button>회원가입</Button>
       </Form>
     </PageTemplate>
   );

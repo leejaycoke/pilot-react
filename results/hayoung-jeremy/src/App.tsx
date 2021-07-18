@@ -9,9 +9,9 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
-          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/" component={LoginPage} />
           <Route exact path="/profile" component={ProfilePage} />
-          <Redirect to="/login" />
+          <Redirect to="/" />
         </Switch>
       </BrowserRouter>
     </>

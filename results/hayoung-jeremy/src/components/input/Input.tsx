@@ -31,7 +31,7 @@ const StyledInput = styled.input`
     margin-top: 16px;
   }
   &:last-of-type {
-    margin-bottom: 60px;
+    margin-bottom: 12px;
   }
   &::placeholder {
     color: ${PALETTE.GRAY};

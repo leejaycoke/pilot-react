@@ -8,6 +8,7 @@ import apiClient from "service/api";
 const LoginPage = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const history = useHistory();
 
   const handleId = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,17 +17,23 @@ const LoginPage = () => {
   const handlePw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     apiClient
       .post("/auth/login", { account: id, password })
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
-
-    history.push("/profile");
+      .then((res) => {
+        console.log(res);
+        history.push("/profile");
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.message);
+      });
   };
   return (
-    <PageTemplate title="Login here">
+    <PageTemplate title="Login">
       <Form onSubmit={handleSubmit}>
         <Input type="text" placeholder="ID" value={id} onChange={handleId} />
         <Input
@@ -35,6 +42,7 @@ const LoginPage = () => {
           value={password}
           onChange={handlePw}
         />
+        <p className="errorMessage">{error && error}</p>
         <Button type="submit">로그인</Button>
       </Form>
     </PageTemplate>

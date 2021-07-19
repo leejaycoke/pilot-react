@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import User from '@/view/User.vue'
+import User from '@/view/user.vue'
 
 Vue.config.productionTip = false
 

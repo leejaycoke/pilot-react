@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import ApiService from "@/service/ApiService";
-import UrlParamService from "@/service/UrlParamService";
+import ApiService from "@/service/api_service";
+import UrlParamService from "@/service/url_param_service";
 import User from "@/dto/user";
 
 let apiService = new ApiService();

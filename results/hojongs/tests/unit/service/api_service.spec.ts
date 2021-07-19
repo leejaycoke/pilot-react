@@ -1,4 +1,4 @@
-import ApiService from '@/service/ApiService'
+import ApiService from '@/service/api_service'
 import Auth from '@/dto/auth'
 import User from '@/dto/user'
 
@@ -12,7 +12,7 @@ function mockFetch(data: any) {
     );
 }
 
-describe('ApiService.ts', () => {
+describe('api_service.ts', () => {
     it('when login(), given server respond OK, then return valid accessToken', async () => {
         // given
         window.fetch = mockFetch({ accessToken: "asdf" })

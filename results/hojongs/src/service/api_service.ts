@@ -23,7 +23,6 @@ export default class ApiService {
             .then((response) => response.json())
             .catch((err) => console.log(err))
             .then((responseBody) => {
-                console.log("token = " + responseBody.accessToken);
                 return responseBody.accessToken;
             });
     }

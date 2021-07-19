@@ -19,18 +19,20 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Auth from "@/dto/auth";
-import LoginService from "@/service/apiService";
+import ApiService from "@/service/ApiService";
 
-let loginService = new LoginService();
+let apiService = new ApiService();
 
 // @Component가 없으면 this == null
 @Component
 export default class Login extends Vue {
   auth = new Auth("devbadak", "1234");
 
+  /**
+   * Call login API and redirect to /user page
+   */
   login(): void {
-    console.log("auth = " + this.auth);
-    loginService.login(this.auth).then((accessToken) => {
+    apiService.login(this.auth).then((accessToken) => {
       window.location.href = `/user?accessToken=${accessToken}`;
     });
   }

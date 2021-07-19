@@ -9,10 +9,12 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import LoginService from "@/service/apiService";
+import ApiService from "@/service/ApiService";
+import UrlParamService from "@/service/UrlParamService";
 import User from "@/dto/user";
 
-let loginService = new LoginService();
+let apiService = new ApiService();
+let urlParamService = new UrlParamService();
 
 // @Component는 Hook을 사용하기 위해 필요
 // https://class-component.vuejs.org/guide/class-component.html#hooks
@@ -22,11 +24,15 @@ export default class Login extends Vue {
   user = new User(1, "", "", 0);
 
   mounted(): void {
-    console.log("mounted");
-    let accessToken = new URL(location.href).searchParams.get("accessToken");
-    if (accessToken == null) throw "accessToken was null";
+    this.updateUser();
+  }
 
-    loginService.getUser(accessToken).then((user) => {
+  /**
+   * Call user API and update user data
+   */
+  updateUser(): void {
+    let accessToken = urlParamService.getAccessTokenOrThrow();
+    apiService.getUser(accessToken).then((user) => {
       this.user = user;
     });
   }

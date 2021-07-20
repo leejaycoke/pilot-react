@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import User from './User.vue'
+import Login from '@/view/login.vue'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(User),
+  render: h => h(Login),
 }).$mount('#app')

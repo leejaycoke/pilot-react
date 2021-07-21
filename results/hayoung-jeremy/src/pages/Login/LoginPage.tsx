@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 // custom
 import { PageTemplate, Form, Button, Input } from "components";
-import apiClient from "service/api";
+// import apiClient from "service/api";
+import { login } from "store/actions/auth";
+import { AppDispatch } from "../../store/store";
 
 const LoginPage = () => {
+  const dispatch: AppDispatch = useDispatch();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,16 +25,18 @@ const LoginPage = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    apiClient
-      .post("/auth/login", { account: id, password })
-      .then((res) => {
-        console.log(res);
-        history.push("/profile");
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err.response.data.message);
-      });
+    let body = { account: id, password: password };
+    dispatch(login(body));
+    // apiClient
+    //   .post("/auth/login", { account: id, password })
+    //   .then((res) => {
+    //     console.log(res);
+    //     history.push("/profile");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     setError(err.response.data.message);
+    //   });
   };
   return (
     <PageTemplate title="Login">

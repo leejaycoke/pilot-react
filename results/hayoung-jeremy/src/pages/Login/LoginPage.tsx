@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // custom
 import { PageTemplate, Form, Button, Input } from "components";
 // import apiClient from "service/api";
-import { login } from "store/actions/auth";
-import { AppDispatch } from "../../store/store";
+import { AppDispatch, RootState } from "store/store";
+import { login } from "../../store/loginSlice";
 
 const LoginPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -14,6 +14,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+  const { userAccount, userPassword, isLoginSuccess } = useSelector(
+    (state: RootState) => state.login
+  );
 
   const handleId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
@@ -26,7 +29,17 @@ const LoginPage = () => {
     e.preventDefault();
 
     let body = { account: id, password: password };
-    dispatch(login(body));
+    dispatch(login(body))
+      .then((res) => {
+        console.log(res);
+        if (isLoginSuccess) {
+          history.push("/profile");
+        }
+      })
+      .catch((err) => {
+        console.log("err" + err);
+        setError(err.message);
+      });
     // apiClient
     //   .post("/auth/login", { account: id, password })
     //   .then((res) => {

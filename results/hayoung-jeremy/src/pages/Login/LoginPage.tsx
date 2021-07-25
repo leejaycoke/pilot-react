@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
-  const { userAccount, userPassword, isLoginSuccess } = useSelector(
+  const { user, isLoginSuccess } = useSelector(
     (state: RootState) => state.login
   );
 
@@ -38,7 +38,7 @@ const LoginPage = () => {
       })
       .catch((err) => {
         console.log("err" + err);
-        setError(err.message);
+        setError(err.response.data);
       });
     // apiClient
     //   .post("/auth/login", { account: id, password })

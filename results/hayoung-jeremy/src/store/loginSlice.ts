@@ -6,8 +6,7 @@ import { userInfo } from "../types/login";
 const name = "userReducer";
 
 const initialState = {
-  userAccount: "",
-  userPassword: "",
+  user: "",
   error: "",
   isLoginSuccess: false,
 };
@@ -15,10 +14,12 @@ const initialState = {
 export const login = createAsyncThunk(
   `${name}/login`,
   async (dataToSubmit: userInfo, thunkAPI) => {
-    return apiClient
-      .post("/auth/login", dataToSubmit)
-      .then((res) => res)
-      .catch((error) => error);
+    const response = await apiClient.post("/auth/login", dataToSubmit);
+    return response.data;
+    // return apiClient
+    //   .post("/auth/login", dataToSubmit)
+    //   .then((res) => res)
+    //   .catch((error) => error);
   }
 );
 
@@ -28,20 +29,17 @@ export const loginSlice = createSlice({
   reducers: {},
   extraReducers: {
     [login.pending.type]: (state) => {
-      state.userAccount = "";
-      state.userPassword = "";
+      state.user = "";
       state.error = "";
       state.isLoginSuccess = false;
     },
     [login.fulfilled.type]: (state, action) => {
-      state.userAccount = action.payload;
-      state.userPassword = action.payload;
+      state.user = action.payload;
       state.error = "";
       state.isLoginSuccess = true;
     },
     [login.rejected.type]: (state, action) => {
-      state.userAccount = "";
-      state.userPassword = "";
+      state.user = "";
       state.error = action.payload;
       state.isLoginSuccess = false;
     },

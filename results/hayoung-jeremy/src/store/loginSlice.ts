@@ -5,20 +5,39 @@ import { userInfo } from "../types/login";
 
 const name = "userReducer";
 
-const initialState = {
-  user: "",
-  error: "",
+interface IinitialState {
+  userToken: unknown | string;
+  isLoginSuccess: boolean;
+}
+
+const initialState: IinitialState = {
+  userToken: "",
   isLoginSuccess: false,
 };
 
 export const login = createAsyncThunk(
   `${name}/login`,
   async (dataToSubmit: userInfo, thunkAPI) => {
-    const response = await apiClient.post("/auth/login", dataToSubmit);
-    return response.data;
+    // trial-04
+    // const response = await apiClient.post("/auth/login", dataToSubmit);
+    // return response.data;
+
+    // trial-03
+    // return await apiClient.post("/auth/login", dataToSubmit);
+
+    // trial-02
+    try {
+      const res = await apiClient.post("/auth/login", dataToSubmit);
+      return res.data;
+    } catch (e) {
+      console.error(e);
+      return thunkAPI.rejectWithValue(e.response.data.message);
+    }
+
+    // trial-01
     // return apiClient
     //   .post("/auth/login", dataToSubmit)
-    //   .then((res) => res)
+    //   .then((res) => res.data)
     //   .catch((error) => error);
   }
 );
@@ -27,23 +46,20 @@ export const loginSlice = createSlice({
   name,
   initialState,
   reducers: {},
-  extraReducers: {
-    [login.pending.type]: (state) => {
-      state.user = "";
-      state.error = "";
-      state.isLoginSuccess = false;
-    },
-    [login.fulfilled.type]: (state, action) => {
-      state.user = action.payload;
-      state.error = "";
-      state.isLoginSuccess = true;
-    },
-    [login.rejected.type]: (state, action) => {
-      state.user = "";
-      state.error = action.payload;
-      state.isLoginSuccess = false;
-    },
-  },
+  extraReducers: (builder) =>
+    builder
+      .addCase(login.pending, (state) => {
+        state.userToken = "";
+        state.isLoginSuccess = false;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.userToken = action.payload;
+        state.isLoginSuccess = true;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.userToken = "";
+        state.isLoginSuccess = false;
+      }),
 });
 
 export const loginReducer = loginSlice.reducer;

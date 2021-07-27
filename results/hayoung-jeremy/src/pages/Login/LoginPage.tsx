@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // custom
 import { PageTemplate, Form, Button, Input } from "components";
-import { AppDispatch, RootState } from "store/store";
+import { AppDispatch } from "store/store";
 import { login } from "store/loginSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 
@@ -14,7 +14,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string & unknown>("");
   const history = useHistory();
-  const { userToken } = useSelector((state: RootState) => state.login);
 
   const handleId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
@@ -31,9 +30,7 @@ const LoginPage = () => {
       .then(unwrapResult)
       .then((res) => {
         history.push("/profile");
-        if (typeof userToken === "string") {
-          localStorage.setItem("userToken", JSON.stringify(userToken));
-        }
+        localStorage.setItem("userToken", JSON.stringify(res));
       })
       .catch((err) => {
         console.log("err : " + err);

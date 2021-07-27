@@ -32,11 +32,12 @@ const StyledButton = styled.button`
   &:hover {
     border-color: ${PALETTE.MAIN};
     color: ${darken(0.1, PALETTE.MAIN)};
+    transform: perspective(1000px) translateZ(-5px);
   }
-
   &:active {
     border-color: ${darken(0.08, PALETTE.MAIN)};
     background-color: ${lighten(0.185, PALETTE.MAIN)};
+    transform: perspective(1000px) translateZ(-15px);
   }
 `;
 

@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import apiClient from "service/api";
-import { loginInfo } from "../types/login";
+import { loginInfo } from "../types/auth";
 
-const name = "userReducer";
+const name = "loginReducer";
 
-interface IuserState {
+interface IloginState {
   userToken: unknown | string;
   isLoginSuccess: boolean;
 }
 
-const initialState: IuserState = {
+const initialState: IloginState = {
   userToken: "",
   isLoginSuccess: false,
 };
@@ -28,16 +28,6 @@ export const login = createAsyncThunk(
     }
   }
 );
-
-export const logout = createAsyncThunk(`${name}/logout`, async () => {
-  try {
-    const res = await apiClient.get("/auth/logout");
-    return res.data;
-  } catch (e) {
-    console.error(e);
-    return e;
-  }
-});
 
 // slice
 export const loginSlice = createSlice({
@@ -58,9 +48,6 @@ export const loginSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.userToken = "";
         state.isLoginSuccess = false;
-      })
-      .addCase(logout.fulfilled, (state) => {
-        state.userToken = "";
       }),
 });
 

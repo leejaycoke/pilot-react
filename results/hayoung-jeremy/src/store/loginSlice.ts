@@ -1,23 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import apiClient from "service/api";
-import { loginInfo } from "../types/auth";
-
-const name = "loginReducer";
+import { loginInfo } from "types/auth";
 
 interface IloginState {
   userToken: unknown | string;
   isLoginSuccess: boolean;
 }
 
-const initialState: IloginState = {
+const initialLoginState: IloginState = {
   userToken: "",
   isLoginSuccess: false,
 };
 
 // actions
 export const login = createAsyncThunk(
-  `${name}/login`,
+  `login`,
   async (dataToSubmit: loginInfo, thunkAPI) => {
     try {
       const res = await apiClient.post("/auth/login", dataToSubmit);
@@ -31,8 +29,8 @@ export const login = createAsyncThunk(
 
 // slice
 export const loginSlice = createSlice({
-  name,
-  initialState,
+  name: "login",
+  initialState: initialLoginState,
   reducers: {},
   extraReducers: (builder) =>
     builder

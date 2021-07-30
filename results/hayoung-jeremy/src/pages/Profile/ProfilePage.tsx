@@ -36,8 +36,8 @@ const ProfilePage = () => {
   };
   return (
     <PageTemplate title="Profile here">
-      <p>Lv : {user.level}</p>
-      <p>NAME : {user.name}</p>
+      <p className="userInfo">Lv : {user.level}</p>
+      <p className="userInfo">NAME : {user.name}</p>
       <Button onClick={handleLogout}>로그아웃</Button>
     </PageTemplate>
   );

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {lighten} from "polished";
+import { darken, lighten } from "polished";
 
 // custom
-import {PALETTE} from "style";
+import { PALETTE } from "style";
 
 interface PageProps {
   children?: React.ReactNode;
@@ -39,6 +39,11 @@ const StyledMain = styled.main`
     font-size: 28px;
     font-weight: 500;
     color: ${lighten(0.2, PALETTE.BLACK)};
+  }
+  & .userInfo {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: ${darken(0.2, PALETTE.MAIN)};
   }
 `;
 

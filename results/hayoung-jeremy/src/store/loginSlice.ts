@@ -15,7 +15,7 @@ const initialLoginState: IloginState = {
 
 // actions
 export const login = createAsyncThunk(
-  `login`,
+  "login",
   async (dataToSubmit: loginInfo, thunkAPI) => {
     try {
       const res = await apiClient.post("/auth/login", dataToSubmit);
@@ -43,7 +43,7 @@ export const loginSlice = createSlice({
         state.userToken = action.payload;
         state.isLoginSuccess = true;
       })
-      .addCase(login.rejected, (state, action) => {
+      .addCase(login.rejected, (state) => {
         state.userToken = "";
         state.isLoginSuccess = false;
       }),

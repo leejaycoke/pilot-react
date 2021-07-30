@@ -30,7 +30,7 @@ const LoginPage = () => {
       .then(unwrapResult)
       .then((res) => {
         history.push("/profile");
-        localStorage.setItem("userToken", JSON.stringify(res));
+        localStorage.setItem("userToken", res);
       })
       .catch((err) => {
         console.log("err : " + err);

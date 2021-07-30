@@ -12,14 +12,15 @@ const ProfilePage = () => {
   const history = useHistory();
   // states :
   const user = useTypedSelector((state) => state.getUser.user);
+  const userToken = useTypedSelector((state) => state.login.userToken);
   console.log(user);
 
   useEffect(() => {
-    dispatch(getUserInfo())
+    dispatch(getUserInfo(userToken))
       .then(unwrapResult)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-  }, [dispatch]);
+  }, [dispatch, userToken]);
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
@@ -27,10 +28,8 @@ const ProfilePage = () => {
   };
   return (
     <PageTemplate title="Profile here">
-      <p>ID : {user.id}</p>
-      <p>NAME : {user.name}</p>
-      <p>ACCOUNT : {user.account}</p>
       <p>Lv : {user.level}</p>
+      <p>NAME : {user.name}</p>
       <Button onClick={handleLogout}>로그아웃</Button>
     </PageTemplate>
   );

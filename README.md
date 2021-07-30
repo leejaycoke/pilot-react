@@ -65,3 +65,4 @@ $ docker start -a pilot-auth
 - [Kim-Jaemin420](https://github.com/Kim-Jaemin420/pilot-react/results/Kim-Jaemin420) 부족하지만 열심히 해봤습니다!
 - [Leehaeun0](https://github.com/Leehaeun0/pilot-react/tree/main/results/leehaeun0) 프론트엔드 5개월차 신입입니다 피드백 주시면 감사합니다!
 - [cozy60](https://github.com/cozy60/pilot-react/tree/main/results/cozy60) 주니어 개발자 한번 참여해봅니다! 피드백 적극 환영
+- [hayoung-jeremy](https://github.com/hayoung-jeremy/pilot-react/tree/main/results/hayoung-jeremy) 개발자로 전향을 준비 중입니다. 성장할 기회를 주셔서 감사해요!

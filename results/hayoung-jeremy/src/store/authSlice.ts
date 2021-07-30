@@ -19,12 +19,16 @@ export const getUserInfo = createAsyncThunk(
   "getUser",
   async (accessToken: string | unknown) => {
     try {
-      const res = await apiClient.get("/v1/users/me", accessToken);
+      const res = await apiClient.get("/v1/users/me", {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
       return res.data;
     } catch (e) {
       console.error(e);
-      return await e.response.data.message;
+      return await e;
     }
+    // const res = await apiClient.get("/v1/users/me");
+    // return res.data;
   }
 );
 

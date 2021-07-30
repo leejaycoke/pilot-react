@@ -12,15 +12,23 @@ const ProfilePage = () => {
   const history = useHistory();
   // states :
   const user = useTypedSelector((state) => state.getUser.user);
-  const userToken = useTypedSelector((state) => state.login.userToken);
-  console.log(user);
+  // console.log("유저 정보 : ");
+  // console.log(user);
+  // console.log(user.account);
+  // console.log(user.level);
+  // console.log(user.name);
 
   useEffect(() => {
-    dispatch(getUserInfo(userToken))
+    const accessToken = localStorage.getItem("userToken");
+    dispatch(getUserInfo(accessToken))
       .then(unwrapResult)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  }, [dispatch, userToken]);
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");

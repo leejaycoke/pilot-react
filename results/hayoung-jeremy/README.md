@@ -1,7 +1,12 @@
 # 파일럿 프로젝트
 
-로그인 및 회원 정보 페이지를 구현합니다.
+로그인 및 회원 정보 페이지를 구현합니다.  
+개발 과정은 [여기](https://www.notion.so/pilot-react-b157a0338a4241059380400d608727d7)에 기록하였습니다.
 <br/><br/>
+
+## 시연
+
+![React App - Chrome 2021-07-30 16-24-08](https://user-images.githubusercontent.com/74491172/127616969-9d9640f7-930d-44fa-842a-f144a2a4e596.gif)
 
 ## 기술 스택
 
@@ -37,8 +42,8 @@ $ docker start -a pilot-auth
 - [x] React
 - [x] Typescript
 - [ ] Test Case 작성
-- [ ] 자바스크립트 Object `{}` (type object 포함)의 사용을 하지말아보자!
-- [ ] API 요청, 응답 데이터는 클래스를 이용
+- [x] 자바스크립트 Object `{}` (type object 포함)의 사용을 하지말아보자!
+- [x] API 요청, 응답 데이터는 클래스를 이용
 
 ## 구현 내용
 
